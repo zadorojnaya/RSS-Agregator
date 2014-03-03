@@ -20,16 +20,27 @@ public class MainPageServlet extends HttpServlet{
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
-//        response.setContentType("text/html");
-//        HttpSession s = request.getSession();
-  //      s.setAttribute("sessionName",request.getParameter("Name"));
-    //    s.setAttribute("sessionName",request.getParameter("button"));
-   //   s.setAttribute("lastNum", request.getParameter("Name"));
-//        Login.DataBase.getLastLogin()
-//        s.setAttribute("lastNum", Login.DataBase.getLastLogin());
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("RSS.xml");
-//        if(dispatcher != null){
-//            dispatcher.forward(request,response);
-//        }
+        response.setContentType("text/html");
+        HttpSession s = request.getSession();
+        Feed reader = Feed.getInstance();
+        reader.writeNews();
+        s.setAttribute("URL", request.getParameter("URL"));
+        if(s.getAttribute("URL") != null){
+             if(DataBase.addURL(s.getAttribute("URL").toString())){
+                 s.setAttribute("URLCon","GOOD");
+             }
+             else {
+                s.setAttribute("URLCon","BAD");
+                }
+        }
+        else {
+            s.setAttribute("URLCon","NullURL");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Feeds.jsp");
+        if(dispatcher != null){
+            dispatcher.forward(request,response);
+        }
     }
+
+
 }

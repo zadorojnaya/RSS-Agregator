@@ -1,5 +1,7 @@
 package Login;
 
+import Feeds.Menu;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +32,7 @@ public class Servlet extends HttpServlet {
                 if (null != sessionData.loginLog){
                       try {
                             if(login(sessionData.loginLog, sessionData.passwordLog,dBase)){
+                               //Menu.doPost();
                                   dispatcher = request.getRequestDispatcher("Feeds.jsp");
                             }
                           else s.setAttribute("sessionLabel","Wrong password or login");
@@ -43,8 +46,9 @@ public class Servlet extends HttpServlet {
             if("Log".equals(sessionData.button)){
                     if(sessionData.secondPass.equals(sessionData.passwordReg)){
                         if(register(sessionData.loginReg, sessionData.passwordReg,dBase)){
-                           dispatcher = request.getRequestDispatcher("Feeds.jsp");
-                        }
+
+                            dispatcher = request.getRequestDispatcher("Feeds.jsp");
+                          }
                         else
                         {  s.setAttribute("sessionLabel","we have this login. choose another,please");}
                     }

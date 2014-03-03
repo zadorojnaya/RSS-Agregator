@@ -57,4 +57,5 @@ public class DataBase {
     public static String getLastLogin(){
         return lastLogin;
     }
+    public Connection getCon(){return connect;}
 }
