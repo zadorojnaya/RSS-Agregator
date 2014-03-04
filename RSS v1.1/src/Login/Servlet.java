@@ -1,8 +1,6 @@
 package Login;
 
-import Feeds.MainPageServlet;
 import Feeds.Menu;
-import sun.applet.Main;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -22,18 +17,14 @@ import java.sql.SQLException;
  */
 @WebServlet("/Main")
 public class Servlet extends HttpServlet {
-    public static String path;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 
     }
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
         response.setContentType("text/html");
 
         HttpSession s = request.getSession();
         DataType sessionData = dataProcessing(s,request);
-        path = getServletContext().getRealPath("");
         DataBase dBase = new DataBase();
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         if(sessionData.button != null){
@@ -41,10 +32,8 @@ public class Servlet extends HttpServlet {
                 if (null != sessionData.loginLog){
                       try {
                             if(login(sessionData.loginLog, sessionData.passwordLog,dBase)){
-                                Menu.createMenu(path,sessionData.loginLog);
-                                Menu.createNews();
-                                MainPageServlet.setLogin(sessionData.loginLog);
-                              dispatcher = request.getRequestDispatcher("Feeds.jsp");
+                               //Menu.doPost();
+                                  dispatcher = request.getRequestDispatcher("Feeds.jsp");
                             }
                           else s.setAttribute("sessionLabel","Wrong password or login");
                         } catch (SQLException e) {
@@ -90,7 +79,7 @@ public class Servlet extends HttpServlet {
         s.setAttribute("buffer",request.getParameter("PasswordReg2"));
         data.secondPass = (String)s.getAttribute("buffer");
         return data;
-       }
+    }
 
     public  Boolean login(String login, String pass, DataBase dBase) throws SQLException {
        if(dBase.LogIn(login,pass)){
@@ -108,8 +97,5 @@ public class Servlet extends HttpServlet {
         else
             return false;
     }
-
-
-
 }
 

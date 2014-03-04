@@ -10,4 +10,4 @@ public class DataType {
     public String passwordReg;
     public String secondPass;
     public String button;
-   }
+  }

@@ -1,6 +1,5 @@
 <%@ page import="Feeds.Feed" %>
 <%@ page import="Feeds.Menu" %>
-<%@ page import="Feeds.MainPageServlet" %>
 <%--
   Created by IntelliJ IDEA.
   User: Naya
@@ -14,22 +13,19 @@
     <title>Feeds</title>
 </head>
 <body>
-<form action="MainPageServlet" method="get">
+<form action="MainPageServlet" method="post">
 
 <Table>
     <tr>
-    <IFrame src="Menu.jsp" height="685" align="left"></IFrame></tr>
+    <IFrame src="menu.html" height="700" align="left"></IFrame></tr>
     <tr>
         <tr><input type="text" name="Label" value = "<%if(session.getAttribute("URLCon") != null){out.print
         (session.getAttribute("URLCon"));} %> "disabled></tr>
-        <tr><input type="text" value = "<%out.print(MainPageServlet.getLastLogin());%>" disabled></tr>
-        <tr>Here you can add a new feed:<p>
-           URL: <input type="text" name = "URL" ></tr>
-        </p>
-        Name: <input type="text" name = "name" >
+        <tr><input type="text" value = "<%out.print(Login.DataBase.getLastLogin());%>" disabled></tr>
+        <tr>Here you can add a new feed<input type="text" name = "URL"></tr>
         <tr><input type="submit"></tr>
     <tr>
-        <IFrame src="News.html" name="news" height="570" width = "1025" align="bottom"></IFrame></tr>
+        <IFrame src="News.html"height="400" width = "1000" align="bottom"></IFrame></tr>
     </tr>
 </Table>
 </form>

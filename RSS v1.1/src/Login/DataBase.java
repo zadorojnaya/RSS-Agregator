@@ -8,7 +8,7 @@ import java.sql.*;
 public class DataBase {
     public String dataBaseConnect;
     private Connection connect = null;
-    private String lastLogin;
+    private static String lastLogin;
     public DataBase(){
         try{
             String user = "root";
@@ -54,7 +54,7 @@ public class DataBase {
         }
     }
 
-    public String getLastLogin(){
+    public static String getLastLogin(){
         return lastLogin;
     }
     public Connection getCon(){return connect;}
