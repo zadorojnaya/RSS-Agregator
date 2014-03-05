@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Naya on 02.03.14.
@@ -19,30 +21,59 @@ import java.io.IOException;
 @WebServlet("/MainPageServlet")
 public class MainPageServlet extends HttpServlet{
     static HttpSession s;
+    private static HttpServletRequest gRequest;
+    private static HttpServletResponse gResponse;
     public static String lastLogin;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
         response.setContentType("text/html");
+        gRequest = request;
+        gResponse = response;
         s = request.getSession();
         String URL = request.getParameter("URL");
         String name = request.getParameter("name");
+        String prevName = request.getParameter("prevName");
+        s.setAttribute("button",request.getParameter("button"));
         s.setAttribute("URL", URL);
         s.setAttribute("name", name);
-        if((URL != null)&&(!URL.equals(""))&&(name!= null)&&(!name.equals(""))){
-            if(DataBase.addURL(URL,name)){
-                s.setAttribute("URLCon","GOOD");
+        s.setAttribute("prevName",prevName);
+        s.setAttribute("nameDel",request.getParameter("delName"));
+        s.setAttribute("newName",request.getParameter("newName"));
+        if(s.getAttribute("button").equals("add")){
+            if((URL != null)&&(!URL.equals(""))&&(name!= null)&&(!name.equals(""))){
+                if(DataBase.addURL(URL,name)){
+                    s.setAttribute("URLCon","GOOD");
+                }
+                else {
+                    s.setAttribute("URLCon","BAD");
+                }
             }
             else {
-                s.setAttribute("URLCon","BAD");
+                s.setAttribute("URLCon","NullURL");
             }
+            CreatePages.createMenu(Servlet.path, lastLogin);
+            refresh();
         }
-        else {
-            s.setAttribute("URLCon","NullURL");
-        }
+        else{
 
-        Menu.createMenu(Servlet.path,lastLogin);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Feeds.jsp");
+                try {
+                    if((s.getAttribute("nameDel")!=null)&&(!s.getAttribute("nameDel").equals(""))){
+                        DataBase.delete(s.getAttribute("nameDel").toString());
+                        s.setAttribute("URLCon","Good");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    s.setAttribute("URLCon","BAD");
+                }
+            CreatePages.createMenu(Servlet.path, lastLogin);
+            refresh();
+
+        }
+    }
+
+    public static void refresh() throws ServletException, IOException {
+        RequestDispatcher dispatcher = gRequest.getRequestDispatcher("Feeds.jsp");
         if(dispatcher != null){
-            dispatcher.forward(request,response);
+            dispatcher.forward(gRequest,gResponse);
         }
     }
 

@@ -6,15 +6,15 @@ import sun.awt.image.ImageWatched;
  * Created by Naya on 02.03.14.
  */
 public class DataType {
-    static String title;
-    static String link;
-    static String publishDate;
-    static String author;
-    static String description;
+     String title;
+     String link;
+     String publishDate;
+     String author;
+     String description;
+     static String canal;
+     static String URL;
 
 
-    public DataType(){
 
-    }
 
 }

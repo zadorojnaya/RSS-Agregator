@@ -1,7 +1,9 @@
 package Login;
 
+import Feeds.CreatePages;
+import Feeds.Links;
 import Feeds.MainPageServlet;
-import Feeds.Menu;
+import Feeds.CreatePages;
 import sun.applet.Main;
 
 import javax.servlet.RequestDispatcher;
@@ -11,11 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Naya on 02.03.14.
@@ -23,6 +25,7 @@ import java.sql.SQLException;
 @WebServlet("/Main")
 public class Servlet extends HttpServlet {
     public static String path;
+    DataType sessionData;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 
     }
@@ -32,7 +35,7 @@ public class Servlet extends HttpServlet {
         response.setContentType("text/html");
 
         HttpSession s = request.getSession();
-        DataType sessionData = dataProcessing(s,request);
+        sessionData = dataProcessing(s,request);
         path = getServletContext().getRealPath("");
         DataBase dBase = new DataBase();
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -41,23 +44,29 @@ public class Servlet extends HttpServlet {
                 if (null != sessionData.loginLog){
                       try {
                             if(login(sessionData.loginLog, sessionData.passwordLog,dBase)){
-                                Menu.createMenu(path,sessionData.loginLog);
-                                Menu.createNews();
+                                CreatePages.createMenu(path, sessionData.loginLog);
+                                CreatePages.createNews();
                                 MainPageServlet.setLogin(sessionData.loginLog);
-                              dispatcher = request.getRequestDispatcher("Feeds.jsp");
-                            }
-                          else s.setAttribute("sessionLabel","Wrong password or login");
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                            s.setAttribute("sessionLabel",dBase.dataBaseConnect);
+                                dispatcher = request.getRequestDispatcher("Feeds.jsp");
+                                }
+                          else  s.setAttribute("sessionLabel","Wrong password or login");
+                      } catch (SQLException e) {
+                          e.printStackTrace();
+                          s.setAttribute("sessionLabel", dBase.dataBaseConnect);
                       }
+
                 }
+                 else {
+                    s.setAttribute("sessionLabel","Wrong password or login");
+                 }
             }
             else
             if("Log".equals(sessionData.button)){
                     if(sessionData.secondPass.equals(sessionData.passwordReg)){
                         if(register(sessionData.loginReg, sessionData.passwordReg,dBase)){
-
+                            CreatePages.createMenu(path, sessionData.loginReg);
+                            CreatePages.createNews();
+                            MainPageServlet.setLogin(sessionData.loginReg);
                             dispatcher = request.getRequestDispatcher("Feeds.jsp");
                           }
                         else
@@ -100,14 +109,15 @@ public class Servlet extends HttpServlet {
            return false;
        }
     }
-
-    public Boolean register(String login, String pass, DataBase dBase){
+    public boolean register(String login, String pass, DataBase dBase){
         if(dBase.Register(login,pass)){
-        return true;
-    }
+            return true;
+        }
         else
             return false;
     }
+
+
 
 
 

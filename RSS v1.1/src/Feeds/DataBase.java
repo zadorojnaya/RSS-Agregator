@@ -1,5 +1,7 @@
 package Feeds;
 
+import Login.Servlet;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,8 +19,11 @@ public class DataBase {
     public static boolean addURL(String URL,String name){
         try{
             Statement stmt = db.getCon().createStatement();
-            stmt.executeUpdate("insert into URL(login,URL,Name)values('"+MainPageServlet.getLastLogin()+"','"+URL+"','"+name+"');");
-            return true;
+            List<Links> list = loadURL(MainPageServlet.getLastLogin());
+           stmt.executeUpdate("insert into URL(login,URL,Name)values('"+MainPageServlet.getLastLogin()+
+                        "','"+URL+"','"+name+"');");
+                return true;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -46,6 +51,16 @@ public class DataBase {
 return listURL;
 //        rset.close();
 
+    }
+    public static void delete(String name) throws SQLException {
+        try{
+            Statement stmt = db.getCon().createStatement();
+            stmt.executeUpdate("delete from URL where login='"+MainPageServlet.getLastLogin()+"' and Name='"+name+"'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
 
 }

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +7,4 @@
 <body><style>input.flat{border:solid 1px black;} li {
     list-style-type: none;
    }</style><Form action="menuServlet" method="post"><UL>
-<LI><input type="submit" class="flat" value="DataArt" name="button"></LI>
-<LI><input type="submit" class="flat" value="FreeSoft" name="button"></LI>
-<LI><input type="submit" class="flat" value="Sport" name="button"></LI>
-<LI><input type="submit" class="flat" value="PinkFloyd" name="button"></LI>
-<LI><input type="submit" class="flat" value="FreeSoft" name="button"></LI>
-<LI><input type="submit" class="flat" value="WorldNews" name="button"></LI></UL></Form></Body></HTML>
+<LI><input type="submit" style="width:200px;" class="flat" value="PinkFloyd" name="button"></LI></UL></Form></Body></HTML>
