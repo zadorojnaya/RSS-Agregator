@@ -44,8 +44,10 @@ public class XMLReader {
                 feed.description = getElementValue(element, "description");
                 list.add(feed);
             }
+
             uData.feedsList = list;
             uData.path = uData.localpath;
+
         }
         catch(Exception ex) {
             ex.printStackTrace();

@@ -205,6 +205,7 @@ public class LoginServlet extends HttpServlet {
         if(dBase.LogIn(login,pass)){
             uData.login = login;
             uData.path = getServletContext().getRealPath("");
+            uData.localpath = uData.path;
             return true;
         }
         else {
@@ -216,6 +217,7 @@ public class LoginServlet extends HttpServlet {
             if(dBase.Register(login,pass)){
                 uData.login = login;
                 uData.path = getServletContext().getRealPath("");
+                uData.localpath = uData.path;
                 return true;
             }
             else

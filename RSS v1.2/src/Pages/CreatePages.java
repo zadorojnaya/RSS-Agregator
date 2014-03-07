@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -24,12 +25,13 @@ public class CreatePages {
         path.append("\\Menu.jsp");
         XMLReader reader = new XMLReader();
         dBase.loadURL(uData);
-        BufferedWriter out = new BufferedWriter(new FileWriter(path.toString()));
-        out.write("<%@ page contentType=\"text/html;charset=UTF-8\"%><!DOCTYPE html>" +
+        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream(path.toString()), "UTF-8"));
+        out.write("<%@ page contentType=\"text/html;charset=Utf-8\"%><!DOCTYPE html>" +
                 "\n" +
                 "<html>\n" +
                 "<head>\n" +
-                "    <title></title>\n" +
+                "<title></title>\n" +
                 "<style>  input.flat\n" +
                 "        {border:solid 1px black;\n" +
                 "\n" +
@@ -60,11 +62,12 @@ public class CreatePages {
        File file = new File(path.toString());
        file.mkdirs();
        path.append("\\"+name+".html");
-       BufferedWriter out = new BufferedWriter(new FileWriter(path.toString()));
+       BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
+               new FileOutputStream(path.toString()), "UTF-8"));
        out.write("<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
-                " <title></title>\n"+
+                " <meta charset=\"UTF-8\"/><title></title>\n"+
                 "</head>\n" +
                 "<body>");
        int count ;
