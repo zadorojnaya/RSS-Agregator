@@ -15,7 +15,8 @@
 <table width="100%" height="100%">
     <tr>
         <td rowspan="5" width="20%">
-            <IFrame src="<%out.print(session.getAttribute("Login"));%>" style="height: 100%; width: 100%;"
+            <IFrame src="<%if(session.getAttribute("Login")!=null){out.print(session.getAttribute("Login"));}
+                         else out.print("hello.html");%>" style="height: 100%; width: 100%;"
                     scrolling="yes"></IFrame>
         </td>
         <th colspan="2">Add</th>
@@ -48,7 +49,7 @@
     </tr>
     <tr >
         <td colspan="5" height="80%">
-         <IFrame  name ="news" src="<%out.print(session.getAttribute("News"));%>" style="height: 100%; width:100%;"></IFrame>
+         <IFrame  name ="news" src="<%if(session.getAttribute("News") != null){out.print(session.getAttribute("News"));}else {out.print("hello.html");}%>" style="height: 100%; width:100%;"></IFrame>
         </td>
     </tr>
 

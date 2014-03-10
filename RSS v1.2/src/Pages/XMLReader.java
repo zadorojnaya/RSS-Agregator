@@ -15,14 +15,31 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Naya on 06.03.14.
  */
 public class XMLReader {
+    public static boolean getConnection(UserData uData){
 
+        try {
+            //we have connection
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            java.net.URL oracle = new URL("http://www.dataart.ru/blog/feed");
+            URLConnection yc = oracle.openConnection();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(yc.getInputStream());
+            doc.getDocumentElement().normalize();
+            uData.connection = true;
+            return true;
+        } catch (Exception e) {
+            // no connection. Now we'll connected to local storage
+            e.printStackTrace();
+            uData.connection = false;
+            return false;
+        }
+    }
 
     public void writeNews(Links link,UserData uData) throws ParserConfigurationException, IOException, SAXException {
         List<Feeds> list = new ArrayList<Feeds>();
@@ -44,17 +61,11 @@ public class XMLReader {
                 feed.description = getElementValue(element, "description");
                 list.add(feed);
             }
-
             uData.feedsList = list;
-            uData.path = uData.localpath;
-
+            uData.allFeeds.addAll(uData.feedsList);
         }
         catch(Exception ex) {
             ex.printStackTrace();
-            if(uData.FileSave){
-                uData.localpath = uData.path;
-                uData.path = System.getenv("APPDATA")+"\\"+uData.login;
-            }
         }
     }
 
@@ -74,5 +85,4 @@ public class XMLReader {
     private String getElementValue(Element parent,String label) {
         return getCharacterDataFromElement((Element)parent.getElementsByTagName(label).item(0));
     }
-
 }

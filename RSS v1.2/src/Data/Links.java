@@ -5,10 +5,10 @@ package Data;
  */
 public class Links {
     private  String URL;
-    private  String Name;
-    public Links Links(String url, String name){
+    private  String name;
+    public Links Links(String url, String Name){
         URL = url;
-        Name = name;
+        name = Name;
         return this;
     }
 
@@ -17,7 +17,7 @@ public class Links {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
 }

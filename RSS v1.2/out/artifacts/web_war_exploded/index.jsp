@@ -18,25 +18,25 @@
              </tr>
              <tr>
                  <td> Login </td>
-                 <td><input type="text" name="LoginLog"></td>
+                 <td><input type="text" name="LoginLog" tabindex="1"></td>
                  <td>Login</td>
-                 <td><input type="text" name="LoginReg"></td>
+                 <td><input type="text" name="LoginReg" tabindex="4"></td>
              </tr>
              <tr>
                  <td rowspan="2">Password</td>
-                 <td rowspan="2"><input type="text" name="PassLog"></td>
+                 <td rowspan="2"><input type="text" name="PassLog" tabindex="2"></td>
                  <td>Password</td>
-                 <td><input type="text" name="PassReg"></td>
+                 <td><input type="text" name="PassReg"tabindex="5"></td>
              </tr>
              <tr>
 
                  <td>Password</td>
-                 <td><input type="text" name="PassRegA"></td>
+                 <td><input type="text" name="PassRegA" tabindex="6"></td>
              </tr>
              <tr>
              <tr>
-                 <th colspan="2"><input type="submit" value="Sign in" name="button"></th>
-                 <th colspan="2"> <input type="submit" value="Create new account" name="button"></th>
+                 <th colspan="2"><input type="submit" value="Sign in" name="button"tabindex="3"></th>
+                 <th colspan="2"> <input type="submit" value="Create new account" name="button" tabindex="7"></th>
              </tr>
              <tr >
                  <td colspan="4">

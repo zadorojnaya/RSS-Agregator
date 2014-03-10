@@ -10,6 +10,4 @@
             text-decoration: none;
         } body {margin:0;}</style></head>
 <body >
-<button class="flat" style=" width:100%;"><a href = "PinkFloyd.html" target="news">PinkFloyd</a></button><br>
-<button class="flat" style=" width:100%;"><a href = "SportChannel.html" target="news">SportChannel</a></button><br>
 <button class="flat" style=" width:100%;"><a href = "DataArt.html" target="news">DataArt</a></button><br></Body></HTML>

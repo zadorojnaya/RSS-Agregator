@@ -19,7 +19,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="155" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="22" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -34,7 +34,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="156" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="45" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -49,7 +49,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="100" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="53" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -64,7 +64,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="104" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="50" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -79,7 +79,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="107" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="49" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -94,7 +94,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="171" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="28" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -109,7 +109,172 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="20" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="71" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="79" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="84" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="109" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="128" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="140" class="Pages.CreatePages" package="Pages">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="153" class="Login.LoginServlet" package="Login">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="94" class="Login.LoginServlet" package="Login">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="92" class="Login.LoginServlet" package="Login">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="95" class="Login.LoginServlet" package="Login">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="101" class="Login.LoginServlet" package="Login">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="24" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -154,7 +319,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="27" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="42" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -169,7 +334,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="51" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/XMLReader.java" line="39" class="Pages.XMLReader" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -184,7 +349,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="59" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/XMLReader.java" line="34" class="Pages.XMLReader" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -199,7 +364,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="29" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="99" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -214,7 +379,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="44" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="98" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -229,7 +394,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="45" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="102" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -244,7 +409,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/web/feeds.jsp" line="17" class="feeds.jsp" package="V:\Java develop\RSS v1.2\web">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="60" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -259,7 +424,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/web/feeds.jsp" line="19" class="feeds.jsp" package="V:\Java develop\RSS v1.2\web">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="62" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -274,7 +439,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/web/feeds.jsp" line="20" class="feeds.jsp" package="V:\Java develop\RSS v1.2\web">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="61" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -289,37 +454,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="50" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="49" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="48" class="Login.LoginServlet" package="Login">
+      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="55" class="Login.LoginServlet" package="Login">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -364,247 +499,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="60" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="21" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="22" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="23" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="24" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="206" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="205" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="204" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="61" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="60" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="52" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="54" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="208" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Login/LoginServlet.java" line="55" class="Login.LoginServlet" package="Login">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="30" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="31" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="33" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -634,36 +529,6 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="34" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="47" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="48" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
@@ -679,7 +544,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="49" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="117" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -694,97 +559,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="50" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="54" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="55" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="61" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="62" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="63" class="Pages.CreatePages" package="Pages">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="59" class="Pages.CreatePages" package="Pages">
+      <breakpoint url="file://$PROJECT_DIR$/src/Pages/CreatePages.java" line="127" class="Pages.CreatePages" package="Pages">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -846,37 +621,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="feeds.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/feeds.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="40" selection-start="186" selection-end="194" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1088">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HttpServlet.class" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="19" selection-start="2719" selection-end="2719" vertical-scroll-proportion="-13.68" vertical-offset="321" max-vertical-offset="850">
+            <state line="44" column="16" selection-start="3042" selection-end="3042" vertical-scroll-proportion="-19.2" vertical-offset="268" max-vertical-offset="867">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <file leaf-file-name="hello.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/hello.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="44" selection-start="791" selection-end="791" vertical-scroll-proportion="-15.461538" vertical-offset="23" max-vertical-offset="935">
+            <state line="6" column="59" selection-start="124" selection-end="124" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="238">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreatePages.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Pages/CreatePages.java">
+      <file leaf-file-name="Boolean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Boolean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="49" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.59134614" vertical-offset="498" max-vertical-offset="2686">
+            <state line="130" column="0" selection-start="3750" selection-end="3750" vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="4896">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/util/ArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="258" column="0" selection-start="9378" selection-end="9378" vertical-scroll-proportion="0.0" vertical-offset="4386" max-vertical-offset="20026">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Thread.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Thread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="749" column="53" selection-start="27849" selection-end="27849" vertical-scroll-proportion="0.5162455" vertical-offset="11818" max-vertical-offset="34238">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="52" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -884,22 +677,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Login/LoginServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="219" column="45" selection-start="9890" selection-end="9890" vertical-scroll-proportion="0.0" vertical-offset="3063" max-vertical-offset="4012">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StringBuilder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/StringBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="0" selection-start="3682" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1278" max-vertical-offset="7140">
-              <folding>
-                <element signature="e#0#12856#0" expanded="false" />
-              </folding>
+            <state line="85" column="0" selection-start="2815" selection-end="2815" vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="7531">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -907,7 +689,16 @@
       <file leaf-file-name="AbstractStringBuilder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/AbstractStringBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="23579">
+            <state line="63" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="24021">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Object.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="9520">
               <folding />
             </state>
           </provider>
@@ -916,25 +707,7 @@
       <file leaf-file-name="String.java" pinned="false" current="false" current-in-tab="false">
         <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="622" column="0" selection-start="22852" selection-end="22852" vertical-scroll-proportion="0.0" vertical-offset="9829" max-vertical-offset="52292">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XMLReader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1787" selection-end="1787" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="1156">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Links.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Data/Links.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="493">
+            <state line="622" column="0" selection-start="22852" selection-end="22852" vertical-scroll-proportion="0.0" vertical-offset="10574" max-vertical-offset="52853">
               <folding />
             </state>
           </provider>
@@ -956,17 +729,19 @@
         <option value="$PROJECT_DIR$/src/Pages/Feeds.java" />
         <option value="$PROJECT_DIR$/src/Login/UserData.java" />
         <option value="$PROJECT_DIR$/src/Pages/Links.java" />
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/Pages/MenuServlet.java" />
         <option value="$PROJECT_DIR$/src/Pages/NewsServlet.java" />
         <option value="$PROJECT_DIR$/src/Pages/FeedsServlet.java" />
         <option value="$PROJECT_DIR$/src/Login/DataProcessing.java" />
-        <option value="$PROJECT_DIR$/src/Login/DataBase.java" />
         <option value="$PROJECT_DIR$/src/Data/UserData.java" />
-        <option value="$PROJECT_DIR$/src/Login/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/Login/DataBase.java" />
+        <option value="$PROJECT_DIR$/src/Data/Links.java" />
         <option value="$PROJECT_DIR$/src/Pages/XMLReader.java" />
+        <option value="$PROJECT_DIR$/web/hello.html" />
         <option value="$PROJECT_DIR$/web/feeds.jsp" />
         <option value="$PROJECT_DIR$/src/Pages/CreatePages.java" />
+        <option value="$PROJECT_DIR$/src/Login/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
       </list>
     </option>
   </component>
@@ -1012,8 +787,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1117,9 +890,33 @@
               <option name="myItemId" value="Data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserData.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RSS v1.2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RSS v1.2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1134,13 +931,16 @@
     <property name="SearchEverywhereHistory" value="h" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.lastSelected" value="reference.projectsettings.compiler.javacompiler" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
-  <component name="RunManager" selected="Tomcat Server.index.jsp (1)">
-    <configuration default="false" name="index.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
+  <component name="RunManager" selected="Tomcat Server.index.jsp (5)">
+    <configuration default="false" name="index.jsp (1)" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
       <deployment>
         <artifact name="web:war exploded">
@@ -1150,7 +950,47 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_RSS_v1_2_2" />
+        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(1)_RSS_v1_2_3" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="false" name="index.jsp (2)" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
+      <deployment>
+        <artifact name="web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(2)_RSS_v1_2_3" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1190,7 +1030,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(3)_RSS_v1_2_2" />
+        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(3)_RSS_v1_2_4" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1199,11 +1039,51 @@
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50776" />
+        <option name="DEBUG_PORT" value="57971" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="false" name="index.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
+      <deployment>
+        <artifact name="web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="index_jsp_RSS_v1_2_4" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -1234,47 +1114,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(5)_RSS_v1_2_2" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="web:war exploded" />
-        </option>
-      </method>
-    </configuration>
-    <configuration default="false" name="index.jsp (4)" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
-      <deployment>
-        <artifact name="web:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(4)_RSS_v1_2_2" />
+        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(5)_RSS_v1_2_4" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1283,51 +1123,11 @@
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="56008" />
+        <option name="DEBUG_PORT" value="53717" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method>
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="web:war exploded" />
-        </option>
-      </method>
-    </configuration>
-    <configuration default="false" name="index.jsp (1)" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.0.0-RC10" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
-      <deployment>
-        <artifact name="web:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="index_jsp_(1)_RSS_v1_2_3" />
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -1593,19 +1393,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 8.0.0-RC10" />
-      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.index.jsp" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (3)" />
-      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (5)" />
-      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (4)" />
-      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (2)" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (3)" />
+      <item index="4" class="java.lang.String" itemvalue="Tomcat Server.index.jsp" />
+      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (5)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (4)" />
-        <item index="2" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (5)" />
-        <item index="3" class="java.lang.String" itemvalue="Tomcat Server.index.jsp" />
-        <item index="4" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (3)" />
+        <item index="0" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (5)" />
+        <item index="1" class="java.lang.String" itemvalue="Tomcat Server.index.jsp" />
+        <item index="2" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (2)" />
+        <item index="3" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (3)" />
+        <item index="4" class="java.lang.String" itemvalue="Tomcat Server.index.jsp (1)" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1624,15 +1424,17 @@
       <workItem from="1394175701456" duration="8771000" />
       <workItem from="1394193570461" duration="14099000" />
       <workItem from="1394214043245" duration="2263000" />
+      <workItem from="1394359331629" duration="5150000" />
+      <workItem from="1394402073659" duration="8843000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64369000" />
+    <option name="totallyTimeSpent" value="78362000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1685,47 +1487,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1144" column="0" selection-start="44322" selection-end="44322" vertical-scroll-proportion="0.0" vertical-offset="19448" max-vertical-offset="35836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/DataProcessing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/DataBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="27" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1785">
-          <folding>
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="select *from..USER..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="SELECT *from..URL..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="40" selection-start="1204" selection-end="1204" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Data/Links.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
@@ -1738,6 +1499,7 @@
         <state line="20" column="0" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1343">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4586#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1787,27 +1549,25 @@
     <entry file="file://$PROJECT_DIR$/src/Login/DataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="43" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
-          <folding>
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="select *from..USER..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="SELECT *from..URL..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="323">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="20" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1258">
-          <folding />
+          <folding>
+            <element signature="e#1443#1450#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1816,6 +1576,7 @@
         <state line="21" column="67" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1343">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4586#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1858,27 +1619,25 @@
     <entry file="file://$PROJECT_DIR$/src/Login/DataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="21" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1326">
-          <folding>
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="select *from..USER..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="SELECT *from..URL..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="28" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="20" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1258">
-          <folding />
+          <folding>
+            <element signature="e#1443#1450#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1887,6 +1646,7 @@
         <state line="16" column="29" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1598">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4586#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1922,27 +1682,25 @@
     <entry file="file://$PROJECT_DIR$/src/Login/DataBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="21" selection-start="1055" selection-end="1055" vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="1326">
-          <folding>
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="select *from..USER..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="SELECT *from..URL..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="28" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="357">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="36" selection-start="509" selection-end="513" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1258">
-          <folding />
+          <folding>
+            <element signature="e#1443#1450#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1958,23 +1716,107 @@
         <state line="488" column="0" selection-start="18453" selection-end="18453" vertical-scroll-proportion="0.33273056" vertical-offset="7126" max-vertical-offset="37094" />
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1144" column="0" selection-start="44322" selection-end="44322" vertical-scroll-proportion="0.0" vertical-offset="18709" max-vertical-offset="35037">
+        <state line="622" column="0" selection-start="22852" selection-end="22852" vertical-scroll-proportion="0.0" vertical-offset="9829" max-vertical-offset="52292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/GitHub/RSS-Agregator/RSS v1.2/src/Pages/XMLReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="13" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.6137184" vertical-offset="153" max-vertical-offset="1122" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Boolean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="0" selection-start="3750" selection-end="3750" vertical-scroll-proportion="0.0" vertical-offset="1635" max-vertical-offset="4505">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="258" column="0" selection-start="9378" selection-end="9378" vertical-scroll-proportion="0.0" vertical-offset="3811" max-vertical-offset="19635">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="500" selection-end="500" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="9129">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/AbstractStringBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="479" max-vertical-offset="23579">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/StringBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="0" selection-start="2815" selection-end="2815" vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="7140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="16" selection-start="3042" selection-end="3042" vertical-scroll-proportion="-19.2" vertical-offset="268" max-vertical-offset="867">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Feeds.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="32" selection-start="222" selection-end="222" vertical-scroll-proportion="0.2724359" vertical-offset="0" max-vertical-offset="624">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/hello.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="59" selection-start="124" selection-end="124" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/feeds.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="24" selection-start="515" selection-end="515" vertical-scroll-proportion="0.20401338" vertical-offset="184" max-vertical-offset="1105">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Login/DataProcessing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+        <state line="11" column="25" selection-start="259" selection-end="259" vertical-scroll-proportion="0.33754513" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="52" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Links.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="20" selection-start="215" selection-end="215" vertical-scroll-proportion="0.3068592" vertical-offset="0" max-vertical-offset="554">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Login/DataBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="27" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+        <state line="60" column="0" selection-start="1713" selection-end="1745" vertical-scroll-proportion="0.57761735" vertical-offset="615" max-vertical-offset="1700">
           <folding>
             <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="select *from..USER..." />
             <marker date="1394180177128" expanded="true" signature="-1:-1" placeholder="insert into ..." />
@@ -1985,98 +1827,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/UserData.java">
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="28" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Links.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="68" selection-end="68" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Feeds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="622" column="0" selection-start="22852" selection-end="22852" vertical-scroll-proportion="0.0" vertical-offset="9829" max-vertical-offset="52292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/AbstractStringBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0" vertical-offset="462" max-vertical-offset="23579">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/StringBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="3682" selection-end="3682" vertical-scroll-proportion="0.0" vertical-offset="1278" max-vertical-offset="7140">
-          <folding>
-            <element signature="e#0#12856#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="19" selection-start="2719" selection-end="2719" vertical-scroll-proportion="-13.68" vertical-offset="321" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/GitHub/RSS-Agregator/RSS v1.2/src/Pages/XMLReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="13" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.6137184" vertical-offset="153" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="45" selection-start="9890" selection-end="9890" vertical-scroll-proportion="0.0" vertical-offset="3063" max-vertical-offset="4012">
+        <state line="38" column="107" selection-start="1426" selection-end="1426" vertical-scroll-proportion="0.90340906" vertical-offset="169" max-vertical-offset="935">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/XMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1787" selection-end="1787" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="44" selection-start="791" selection-end="791" vertical-scroll-proportion="-15.461538" vertical-offset="23" max-vertical-offset="935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/feeds.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="40" selection-start="186" selection-end="194" vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1088">
-          <folding />
+        <state line="34" column="0" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.33212996" vertical-offset="139" max-vertical-offset="1343">
+          <folding>
+            <element signature="e#1443#1450#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/CreatePages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="49" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.59134614" vertical-offset="498" max-vertical-offset="2686">
+        <state line="57" column="0" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.33212996" vertical-offset="785" max-vertical-offset="3196">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4586#4593#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Login/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="97" selection-start="4509" selection-end="4509" vertical-scroll-proportion="0.20938627" vertical-offset="1295" max-vertical-offset="4658">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="614" column="0" selection-start="24932" selection-end="24932" vertical-scroll-proportion="0.33212996" vertical-offset="9625" max-vertical-offset="35037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_51/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="749" column="53" selection-start="27849" selection-end="27849" vertical-scroll-proportion="0.5162455" vertical-offset="11818" max-vertical-offset="34238">
+          <folding />
         </state>
       </provider>
     </entry>
