@@ -1,9 +1,5 @@
 package login;
 
-import pages.CreatePages;
-import pages.UserData;
-import pages.XMLReader;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -79,7 +75,7 @@ public class LoginServlet extends HttpServlet{
         s.setAttribute("buffer", request.getParameter("removeName"));
         data.removeName = (String)s.getAttribute("buffer");
         s.setAttribute("buffer", request.getParameter("URL"));
-        data.URL = (String)s.getAttribute("buffer");
+        data.url = (String)s.getAttribute("buffer");
         data.session = s;
         return data;
     }
@@ -96,7 +92,7 @@ public class LoginServlet extends HttpServlet{
 
     private boolean register(String login, String pass, DataBase dataBase, UserData userData){
         try {
-            dataBase.Register(login,pass);
+            dataBase.register(login, pass);
             userData.login = login;
             userData.path = getServletContext().getRealPath("")+"\\"+login;
             return true;
@@ -188,8 +184,8 @@ public class LoginServlet extends HttpServlet{
 //        dispatcher = request.getRequestDispatcher("feeds.jsp");
         if("add".equals(sessionData.feedsButton)){
             if(userData.connection){
-                if((null != sessionData.URL)&&(null != sessionData.addName)&&
-                        (!sessionData.URL.equals((""))&&(!sessionData.addName.equals("")))){
+                if((null != sessionData.url)&&(null != sessionData.addName)&&
+                        (!sessionData.url.equals((""))&&(!sessionData.addName.equals("")))){
                     try {
                         if(dataBase.addURL(sessionData,userData)){
                             sessionData.session.setAttribute("URLCon", "was added");
@@ -210,7 +206,7 @@ public class LoginServlet extends HttpServlet{
                 if(userData.connection){
                     try {
                         if((sessionData.removeName!=null)&&(!sessionData.removeName.equals(""))){
-                            if(dataBase.delete(sessionData,userData,dataBase)){
+                            if(dataBase.delete(sessionData,userData)){
                                 sessionData.session.setAttribute("URLCon", "removed");
                                 userData.page.createMenu(userData, dataBase);
                             }

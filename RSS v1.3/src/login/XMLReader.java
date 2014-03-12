@@ -1,24 +1,19 @@
-package Pages;
+package login;
 
-import Data.Feeds;
-import Data.Links;
-import Data.UserData;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Naya on 06.03.14.
+ * Created by Naya on 11.03.14.
  */
 public class XMLReader {
     public static boolean getConnection(UserData uData){
@@ -45,7 +40,7 @@ public class XMLReader {
         List<Feeds> list = new ArrayList<Feeds>();
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            java.net.URL oracle = new URL(link.getURL());
+            java.net.URL oracle = new URL(link.url);
             URLConnection yc = oracle.openConnection();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(yc.getInputStream());

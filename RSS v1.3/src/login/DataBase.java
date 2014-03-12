@@ -1,9 +1,8 @@
 package login;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import pages.UserData;
-
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Naya on 11.03.14.
@@ -28,14 +27,15 @@ public class DataBase {
         pstmt.setString(1,login);
         pstmt.setString(2,pass);
         ResultSet rset = null;
+        List<Links> links = new ArrayList<Links>();
         try{
-            rset = pstmt.executeQuery();
-            if(rset !=null){
+            if(pstmt.execute()){
                 pstmt = connect.prepareStatement("SELECT *from links,users where links.login = users.login");
                 rset = pstmt.executeQuery();
-                /*
-                * here will be filling values to user data
-                * */
+                Links l = new Links();
+                l.url = rset.getString("URL");
+                l.name = rset.getString("Name");
+                links.add(l);
                 return true;
             }
             else
@@ -50,13 +50,15 @@ public class DataBase {
         finally {
            if (rset != null) {
                 rset.close();
+            }
+            if( pstmt != null){
                 pstmt.close();
             }
-        }
 
+        }
     }
 
-    boolean Register(String log, String pass) throws SQLException {
+    boolean register(String log, String pass) throws SQLException {
         PreparedStatement pstmt = null;
         /*Login is a key value in table*/
         pstmt = connect.prepareStatement("insert into user (login,pass)values(?,?);");
@@ -70,18 +72,18 @@ public class DataBase {
 
     boolean addURL(SessionData sessionData, UserData uData) throws SQLException {
         PreparedStatement pstmt = null;
-        pstmt = connect.prepareStatement("insert into URL(login,URL,Name)values(?,?,?);");
+        pstmt = connect.prepareStatement("insert into URL(login,URL,name)values(?,?,?);");
         pstmt.setString(1,uData.login);
-        pstmt.setString(2,sessionData.URL);
+        pstmt.setString(2,sessionData.url);
         pstmt.setString(3,sessionData.addName);
         pstmt.executeUpdate("");
         pstmt.close();
         return true;
     }
 
-    boolean delete(SessionData sessionData, UserData uData, DataBase dBase) throws SQLException {
+    boolean delete(SessionData sessionData, UserData uData) throws SQLException {
         PreparedStatement pstmt = null;
-        pstmt = connect.prepareStatement("delete from URL where login= ? and Name= ?");
+        pstmt = connect.prepareStatement("delete from URL where login= ? and name= ?");
         pstmt.setString(1,uData.login);
         pstmt.setString(2,sessionData.removeName);
         pstmt.executeUpdate("");

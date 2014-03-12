@@ -13,7 +13,7 @@ public class SessionData {
     public String passwordReg;
     public String secondPass;
     public String button;
-    public String URL;
+    public String url;
     public String addName;
     public String removeName;
     public String feedsButton;

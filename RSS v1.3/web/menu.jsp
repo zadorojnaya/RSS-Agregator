@@ -11,6 +11,8 @@
     <title></title>
 </head>
 <body>
-
+<core:forEach var="object" items="${requestScope.objectList}">
+    <a href="/link?id=${object.id}">name</a>
+</core:forEach>
 </body>
 </html>
