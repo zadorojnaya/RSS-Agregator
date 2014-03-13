@@ -9,10 +9,15 @@
 <html>
 <head>
     <title></title>
+    <style>  input.flat
+     {border:solid 1px black;}
+     A {text-decoration: none;}
+       body {margin:0;}</style>
 </head>
-<body>
-<core:forEach var="object" items="${requestScope.objectList}">
-    <a href="/link?id=${object.id}">name</a>
-</core:forEach>
+<body onLoad="parent.news.document.location = 'news.jsp'">
+<form action="Login" method="post">
+<%if(session.getAttribute("list")!= null) {out.print(session.getAttribute("list").toString());}
+else out.print("Add URL");%>
+</form>
 </body>
 </html>

@@ -11,6 +11,10 @@
     <title></title>
 </head>
 <body>
+<form action="menu.jsp">
+    <%if(session.getAttribute("allNews")!= null) {out.print(session.getAttribute("allNews").toString());}
+    else out.print("here will be your news!");%>
 
+</form>
 </body>
 </html>

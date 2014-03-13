@@ -16,12 +16,12 @@
         <tr>
             <td rowspan="5" width="20%">
                 <IFrame src="menu.jsp" style="height: 100%; width: 100%;"
-                        scrolling="yes"></IFrame>
+                        scrolling="yes" name="frameMenu"></IFrame>
             </td>
             <th colspan="2">Add</th>
             <th colspan="2">Remove</th>
-            <td><input type="text" value="<%if(session.getAttribute("URLCon") != null){out.print
-                           (session.getAttribute("URLCon"));} %> "disabled style="width: 100%">
+            <td><input type="text" value="<%if(session.getAttribute("message") != null){out.print
+                           (session.getAttribute("message"));} %> "disabled style="width: 100%">
             </td>
             </td>
         </tr>
@@ -30,7 +30,7 @@
             <td><input type="text" style="width: 100%" name="URL"></td>
             <td rowspan="2">Name:</td>
             <td rowspan="2"><input type="text" style="width: 100%" name="removeName"></td>
-            <td><input type="submit" value="create logs" style="height: 100%;width: 100%;" name="feedButton"></td>
+            <td><input type="submit" value="create logs" style="height: 100%;width: 100%;" disabled name="feedButton"></td>
         </tr>
         <tr>
             <td>Name:</td>
