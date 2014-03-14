@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * this class works with database
+ * This class works with database
  *
  * @author Antonina Zadorojnaya
  * @version 1.3 12 Mar 2014  *

@@ -59,12 +59,12 @@ public class LoginServlet extends HttpServlet {
             } else {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
-        }else if (sessionData.feedsButton != null) {
+        } else if (sessionData.feedsButton != null) {
             feedsPageProcessing(userData, dataBase, sessionData);
-             dispatcher = request.getRequestDispatcher("feeds.jsp");
-        }else if(sessionData.menuButton != null){
+            dispatcher = request.getRequestDispatcher("feeds.jsp");
+        } else if (sessionData.menuButton != null) {
             try {
-                s.setAttribute("allNews", menuPageProcessing(userData, sessionData));
+                menuPageProcessing(userData, sessionData);
             } catch (SAXException e) {                                              /*there will never be an error*/
             } catch (ParserConfigurationException e) {                              /*because of userData.connection*/
             }
@@ -72,9 +72,12 @@ public class LoginServlet extends HttpServlet {
         }
         s.setAttribute("dBase", dataBase);
         s.setAttribute("uData", userData);
-        s.setAttribute("message",userData.message);
-        if(userData.linksList != null){
-            s.setAttribute("list",Pages.menu(userData));
+        s.setAttribute("message", userData.message);
+        if (userData.linksList != null) {
+            s.setAttribute("list", Pages.menu(userData));
+        }
+        if (userData.feeds != null) {
+            s.setAttribute("allNews", userData.feeds);
         }
         if (dispatcher != null) {
             dispatcher.forward(request, response);
@@ -131,7 +134,7 @@ public class LoginServlet extends HttpServlet {
      * @throws java.sql.SQLException
      */
     private Boolean login(String login, String pass, Database dataBase, UserData userData) throws SQLException {
-        if (dataBase.login(login, pass,userData)) {
+        if (dataBase.login(login, pass, userData)) {
             dataBase.loadURL(userData);
             userData.path = getServletContext().getRealPath("") + "\\" + login;
             return true;
@@ -151,11 +154,11 @@ public class LoginServlet extends HttpServlet {
      * @return boolean
      */
     private boolean register(String login, String pass, Database dataBase, UserData userData) throws SQLException {
-        if(dataBase.register(login, pass)){
+        if (dataBase.register(login, pass)) {
             userData.login = login;
             userData.path = getServletContext().getRealPath("");
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -228,7 +231,7 @@ public class LoginServlet extends HttpServlet {
                     }
                 } catch (Exception e) {
 
-                        /* error connection to data Bbase*/
+                        /* error connection to database*/
                     userData.message = "error connection with database";
                     e.printStackTrace();
 
@@ -258,14 +261,20 @@ public class LoginServlet extends HttpServlet {
                 if ((null != sessionData.url) && (null != sessionData.addName) &&
                         (!sessionData.url.equals(("")) && (!sessionData.addName.equals("")))) {
                     try {
-                        if (dataBase.addURL(sessionData, userData)) {
+                        if (XMLReader.checkConnection(sessionData.url)) {
+                            if (dataBase.addURL(sessionData, userData)) {
 
-                            /* was added*/
-                            userData.message = "new URL was added";
+                                /* was added*/
+                                Links l = new Links();
+                                userData.message = "new URL was added";
+                                l.name = sessionData.addName;
+                                l.url = sessionData.url;
+                                userData.linksList.add(l);
 
-                            /*refresh menu*/
-                            Pages.menu(userData);
-                        }
+                                /*refresh menu*/
+                                Pages.menu(userData);
+                            }
+                        } else userData.message = "we can't add this url";
                     } catch (Exception e) {
 
                         /*error connection to data base*/
@@ -289,7 +298,15 @@ public class LoginServlet extends HttpServlet {
                         if (dataBase.delete(sessionData, userData)) {
 
                             /* was removed*/
-                            userData.message = "url was removed";
+                            userData.message = "done";
+                            Links l = new Links();
+                            l.name = sessionData.removeName;
+                            int i = 0;
+                            while (userData.linksList.size() > i) {
+                                if (l.name.equals(userData.linksList.get(i).name))
+                                    userData.linksList.remove(i);
+                                i++;
+                            }
 
                             /*refresh menu*/
                             Pages.menu(userData);
@@ -347,25 +364,26 @@ public class LoginServlet extends HttpServlet {
 
     /**
      * Return List of Feeds to be loaded to news.jsp
+     *
      * @param userData    structure of user data
      * @param sessionData structure of session data
      */
-    private Object menuPageProcessing(UserData userData, SessionData sessionData) throws IOException,
+    private void menuPageProcessing(UserData userData, SessionData sessionData) throws IOException,
             SAXException, ParserConfigurationException {
 
-        if(userData.connection){
+        if (userData.connection) {
             int i = 0;
-            while(i < userData.linksList.size()) {
-                if(userData.linksList.get(i).name.equals(sessionData.menuButton))
-                XMLReader.writeNews(userData.linksList.get(i),userData);
+            while (i < userData.linksList.size()) {
+                if (userData.linksList.get(i).name.equals(sessionData.menuButton))
+                    XMLReader.writeNews(userData.linksList.get(i), userData);
                 i++;
             }
-           return Pages.feeds(userData);
-        }else{
+            Pages.feeds(userData);
+        } else {
 
             /*Loading info from file*/
 
         }
-        return null;
+
     }
 }

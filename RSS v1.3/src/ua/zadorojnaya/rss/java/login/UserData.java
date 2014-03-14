@@ -18,6 +18,7 @@ public class UserData {
     public Set<Feeds> allFeeds = new TreeSet<Feeds>(new Comp());    /*Set of feeds for all feeds*/
     public Boolean connection = true;                           /*connection to internet*/
     public String message;                                      /*message to be displayed*/
+    public Object feeds;                                        /*to display on news.jsp*/
 }
 
 /**

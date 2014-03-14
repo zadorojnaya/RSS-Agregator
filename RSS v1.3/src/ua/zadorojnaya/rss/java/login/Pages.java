@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Naya on 13.03.14.
+ * Class creates list of feeds and menu.
+ * @author Antonina Zadorojnaya
+ * @version 1.3 13 Mar 2014  *
  */
 public class Pages {
-
+    /**
+     * Returns list of links to xml files to display in file menu.jsp
+     * there are elements of html code
+     *
+     * @param userData structure of user data
+     * @return
+     */
     static List<String> menu(UserData userData){
         List<String> menu = new ArrayList<String>();
         int i = 0;
@@ -22,7 +30,14 @@ public class Pages {
         return menu;
     }
 
-    static List<String> feeds(UserData userData){
+    /**
+     * method creates list of feeds to load in news.jsp
+     * result records to variable UserData.feeds
+     * there are elements of html code
+     *
+     * @param userData structure of user data
+     */
+    static void feeds(UserData userData){
         List<String> feeds = new ArrayList<String>();
         int i;
         if(userData.sort){
@@ -42,9 +57,16 @@ public class Pages {
                 i--;
             }
         }
-        return feeds;
+        userData.feeds = feeds;
     }
 
+    /**
+     * This method is called only in void method feeds.
+     * Returns string of html code for every feed.
+     * @param i count of feeds
+     * @param userData structure of user data
+     * @return
+     */
     private static String writeFeeds(int i, UserData userData){
         StringBuilder temp = new StringBuilder();
         temp.append("<a href = \"");
@@ -60,6 +82,4 @@ public class Pages {
         temp.append("<br><br><br>");
         return temp.toString();
     }
-
-
 }
