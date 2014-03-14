@@ -11,14 +11,15 @@ import java.util.*;
  * Antonina Zadorojnaya */
 public class UserData {
     public String login;                                        /*user login*/
-    public List<Links> linksList;                               /*list of url from database*/
-    public List<Feeds> feedsList;                               /*list of feeds from xml file*/
+    public List<Links> linksList = new ArrayList<Links>();      /*list of url from database*/
     public String path;                                         /*path to log files*/
     public Boolean sort=true;                                   /*sort news true - old is first */
-    public Set<Feeds> allFeeds = new TreeSet<Feeds>(new Comp());    /*Set of feeds for all feeds*/
     public Boolean connection = true;                           /*connection to internet*/
     public String message;                                      /*message to be displayed*/
     public Object feeds;                                        /*to display on news.jsp*/
+    public int linkIndex;                                       /*index of chosen link*/
+    public Boolean loadLogs = false;                            /*true if loadFile has been called*/
+    public Set<Feeds> allFeeds = new TreeSet<Feeds>();          /*stores all feed*/
 }
 
 /**
@@ -60,6 +61,7 @@ class Feeds {
  * Data structure of links. Obtains from the database
  */
 class Links {
-    public String url;              /*url of feed*/
-    public String name;             /*name of feed*/
+    public String url;                                       /*url of feed*/
+    public String name;                                      /*name of feed*/
+    public List<Feeds> feedsList = new ArrayList<Feeds>();   /*list of news from xml file*/
 }

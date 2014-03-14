@@ -30,7 +30,7 @@
             <td><input type="text" style="width: 100%" name="URL"></td>
             <td rowspan="2">Name:</td>
             <td rowspan="2"><input type="text" style="width: 100%" name="removeName"></td>
-            <td><input type="submit" value="create logs" style="height: 100%;width: 100%;" disabled name="feedButton"></td>
+            <td><input type="submit" value="create logs" style="height: 100%;width: 100%;" name="feedButton"></td>
         </tr>
         <tr>
             <td>Name:</td>

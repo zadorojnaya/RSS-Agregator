@@ -133,10 +133,20 @@ public class LoginServlet extends HttpServlet {
      * @return
      * @throws java.sql.SQLException
      */
-    private Boolean login(String login, String pass, Database dataBase, UserData userData) throws SQLException {
+    private Boolean login(String login, String pass, Database dataBase, UserData userData) throws SQLException, IOException, SAXException, ParserConfigurationException {
         if (dataBase.login(login, pass, userData)) {
-            dataBase.loadURL(userData);
-            userData.path = getServletContext().getRealPath("") + "\\" + login;
+            StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
+            p.append("\\_");
+            p.append(login);
+            p.append(".xml");
+            userData.path = p.toString();
+            if (userData.connection) {
+                dataBase.loadURL(userData);
+            } else {
+                if(!XMLReader.fileRead(userData)){
+                    userData.message = "You have no internet connection!";
+                }
+            }
             return true;
         } else {
             return false;
@@ -156,7 +166,9 @@ public class LoginServlet extends HttpServlet {
     private boolean register(String login, String pass, Database dataBase, UserData userData) throws SQLException {
         if (dataBase.register(login, pass)) {
             userData.login = login;
-            userData.path = getServletContext().getRealPath("");
+            StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
+            p.append("\\login.xml");
+            userData.path = p.toString();
             return true;
         } else {
             return false;
@@ -332,27 +344,16 @@ public class LoginServlet extends HttpServlet {
                 userData.message = "you can't remove news if no internet connection";
             }
         } else if ("Sort by date: new is first".equals(sessionData.feedsButton)) {
-            if (userData.connection) {
                 userData.sort = true;
                 Pages.feeds(userData);
-            } else {
-
-                     /*no connection */
-                userData.message = "you can't sort news if no internet connection";
-            }
         } else if ("Sort by date: old is first".equals(sessionData.feedsButton)) {
-            if (userData.connection) {
                 userData.sort = false;
                 Pages.feeds(userData);
-            } else {
-
-                     /*no connection */
-                userData.message = "you can't sort news if no internet connection";
-            }
         } else if ("create logs".equals(sessionData.feedsButton)) {
             if (userData.connection) {
 
                     /*create logs*/
+                Pages.createLogs(userData);
                 userData.message = "logs were created";
             } else {
 
@@ -370,20 +371,20 @@ public class LoginServlet extends HttpServlet {
      */
     private void menuPageProcessing(UserData userData, SessionData sessionData) throws IOException,
             SAXException, ParserConfigurationException {
-
-        if (userData.connection) {
-            int i = 0;
-            while (i < userData.linksList.size()) {
-                if (userData.linksList.get(i).name.equals(sessionData.menuButton))
-                    XMLReader.writeNews(userData.linksList.get(i), userData);
-                i++;
+        int i = 0;
+        while (i < userData.linksList.size()) {
+            if (userData.linksList.get(i).name.equals(sessionData.menuButton)) {
+                userData.linkIndex = i;
+                break;
             }
-            Pages.feeds(userData);
-        } else {
-
-            /*Loading info from file*/
-
+            i++;
         }
-
+        if (userData.connection) {
+            XMLReader.writeNews(userData);
+        } else if (!userData.loadLogs) {
+            XMLReader.fileRead(userData);
+        }
+        Pages.feeds(userData);
     }
 }
+
