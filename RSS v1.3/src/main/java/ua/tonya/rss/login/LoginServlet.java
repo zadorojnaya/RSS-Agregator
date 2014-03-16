@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
-
+        dataBase.connectionClose();
     }
 
     /**

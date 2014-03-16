@@ -71,6 +71,16 @@ public class Database {
         }
     }
 
+    boolean connectionClose(){
+        try {
+            connect.close();
+            return true;
+        } catch (SQLException e) {
+            log.info(e.getMessage());
+            return false;
+        }
+    }
+
     /**
      * delete url from database for user;
      * returns true if deleting was successful,
