@@ -21,21 +21,26 @@ public class Database {
      * class constructor.
      * Obtains connection to database
      */
-    public Database() {
+    public boolean getconnection() {
         try {
             String user = "root";
             String pass = "123";
             String url = "jdbc:mysql://localhost/RSS";
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             connect = DriverManager.getConnection(url, user, pass);
+            return true;
         } catch (ClassNotFoundException e) {
             log.info(e.getMessage());
+            return false;
         } catch (SQLException e) {
             log.info(e.getMessage());
+            return false;
         } catch (InstantiationException e) {
             log.info(e.getMessage());
+            return false;
         } catch (IllegalAccessException e) {
             log.info(e.getMessage());
+            return false;
         }
     }
 
@@ -50,6 +55,7 @@ public class Database {
      */
     boolean addURL(SessionData sessionData, UserData uData) {
         PreparedStatement pstmt = null;
+        this.getconnection();
         try {
             pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);");
             pstmt.setString(1, uData.login);
@@ -91,6 +97,7 @@ public class Database {
      * @return
      */
     boolean delete(SessionData sessionData, UserData uData) {
+        this.getconnection();
         PreparedStatement pstmt = null;
         try {
             pstmt = connect.prepareStatement("delete from links where login= ? and name= ?;");
@@ -118,6 +125,7 @@ public class Database {
      * @return
      */
     boolean loadURL(UserData userData) {
+        this.getconnection();
         PreparedStatement pstmt = null;
         List<Links> links = new ArrayList<Links>();             /*List is formed from the table "links"*/
         ResultSet rset = null;
@@ -159,6 +167,7 @@ public class Database {
      * @return
      */
     boolean login(String login, String pass, UserData userData) {
+        this.getconnection();
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         try {
@@ -201,6 +210,7 @@ public class Database {
      * @return
      */
     boolean register(String login, String pass) {
+        this.getconnection();
         PreparedStatement pstmt = null;
 
         /*Login is a key value in table*/
