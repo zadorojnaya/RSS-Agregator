@@ -3,6 +3,10 @@ package ua.tonya.rss.login;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
+import ua.tonya.rss.data.DataInfo;
+import ua.tonya.rss.data.Feeds;
+import ua.tonya.rss.data.Links;
+import ua.tonya.rss.data.UserData;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -49,7 +53,6 @@ public class XMLReader {
     }
 
     /**
-     *
      * @param uData structure of user data
      * @return
      */
@@ -76,6 +79,30 @@ public class XMLReader {
                 feedsList.add(f);
             }
             uData.allFeeds.addAll(feedsList);
+            return true;
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean getDatabaseInfo() {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            StringBuilder path = UserData.databaseConfig;
+
+            InputStream is = new FileInputStream(path.toString());
+            Document doc = db.parse(is);
+            doc.getDocumentElement().normalize();
+
+            NodeList nodes = doc.getElementsByTagName("database");
+            for (int i = 0; i < nodes.getLength(); ++i) {
+                Element element = (Element) nodes.item(i);
+                DataInfo.user = getElementValue(element, "user");
+                DataInfo.pass = getElementValue(element, "pass");
+                DataInfo.url = getElementValue(element, "url");
+            }
             return true;
         } catch (Exception e) {
             log.info(e.getMessage());
@@ -229,6 +256,7 @@ public class XMLReader {
 
     /**
      * Overloading
+     *
      * @param uData structure of user data
      * @throws IOException
      * @throws SAXException

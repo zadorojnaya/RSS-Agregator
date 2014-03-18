@@ -3,6 +3,9 @@ package ua.tonya.rss.login;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
+import ua.tonya.rss.data.Feeds;
+import ua.tonya.rss.data.Links;
+import ua.tonya.rss.data.UserData;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

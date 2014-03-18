@@ -1,6 +1,9 @@
 package ua.tonya.rss.login;
 
 import org.xml.sax.SAXException;
+import ua.tonya.rss.data.Links;
+import ua.tonya.rss.data.SessionData;
+import ua.tonya.rss.data.UserData;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,10 +37,16 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession s = request.getSession();
+
+        UserData.databaseConfig = null;
+        UserData.databaseConfig = new StringBuilder(getServletContext().getRealPath(""));
+        UserData.databaseConfig.append("\\");
+        UserData.databaseConfig.append("databaseConfig.xml");
+
         Database dataBase;
         UserData userData;
         Cookie sessionCookie;
-        if ((sessionCookie = newCookie(request)) != null) {
+      //  if ((sessionCookie = newCookie(request)) != null) {
             if ((s.getAttribute("dBase") != null) && (s.getAttribute("uData") != null)) {
                 dataBase = (Database) s.getAttribute("dBase");
                 userData = (UserData) s.getAttribute("uData");
@@ -45,17 +54,19 @@ public class LoginServlet extends HttpServlet {
                 dataBase = new Database();
                 userData = new UserData();
             }
-            Cookie cookie = new Cookie("JSESSIONID", sessionCookie.getValue());
-            response.addCookie(cookie);
-        } else {
-            dataBase = new Database();
-            userData = new UserData();
-        }
+//            Cookie cookie = new Cookie("JSESSIONID", sessionCookie.getValue());
+//            response.addCookie(cookie);
+//        } else {
+//            dataBase = new Database();
+//            userData = new UserData();
+//        }
+
         SessionData sessionData = new SessionData();
         sessionData.request = request;
         sessionData = dataProcessing(s, sessionData);
         XMLReader.getConnection(userData);
         userData.message = null;
+
         if (sessionData.button != null) {
             if (indexPageProcessing(userData, dataBase, sessionData)) {
                 dispatcher = request.getRequestDispatcher("feeds.jsp");
@@ -73,9 +84,11 @@ public class LoginServlet extends HttpServlet {
             }
             dispatcher = request.getRequestDispatcher("menu.jsp");
         }
+
         s.setAttribute("dBase", dataBase);
         s.setAttribute("uData", userData);
         s.setAttribute("message", userData.message);
+
         if (userData.linksList != null) {
             s.setAttribute("list", Pages.menu(userData));
         }
@@ -85,6 +98,7 @@ public class LoginServlet extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
+
         dataBase.connectionClose();
     }
 
@@ -310,7 +324,7 @@ public class LoginServlet extends HttpServlet {
     private Boolean login(String login, String pass, Database dataBase, UserData userData) throws SQLException,
             IOException, SAXException, ParserConfigurationException {
         if (dataBase.login(login, pass, userData)) {
-            StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
+            StringBuilder p = UserData.databaseConfig;
             p.append("\\_");
             p.append(login);
             p.append(".xml");
