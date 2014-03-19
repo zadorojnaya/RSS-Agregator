@@ -68,12 +68,10 @@ public class Pages {
      * @throws org.xml.sax.SAXException
      * @throws javax.xml.parsers.ParserConfigurationException
      */
-    private static void prepareList(UserData userData) throws IOException, SAXException, ParserConfigurationException {
+    public static void prepareList(UserData userData) throws IOException, SAXException, ParserConfigurationException {
         int i = 0;
         while (i < userData.linksList.size()) {
-            if (userData.linksList.get(i).feedsList == null) {
-                XMLReader.writeNews(userData, i);
-            }
+            XMLReader.writeNews(userData, i);
             i++;
         }
     }

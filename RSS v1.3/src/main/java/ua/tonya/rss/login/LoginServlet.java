@@ -61,15 +61,12 @@ public class LoginServlet extends HttpServlet {
         sessionData.request = request;
         sessionData = dataProcessing(s, sessionData);
         XMLReader.getConnection(userData);
-        try {
-            XMLReader.fileRead(userData);
-        } catch (Exception e) {
-        }
         userData.message = null;
 
         if (sessionData.button != null) {
             if (indexPageProcessing(userData, dataBase, sessionData)) {
                 dispatcher = request.getRequestDispatcher("feeds.jsp");
+                s.setAttribute("feeds",userData.allFeeds);
             } else {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
@@ -93,7 +90,7 @@ public class LoginServlet extends HttpServlet {
             s.setAttribute("list", userData.linksList);
         }
 
-        s.setAttribute("allFeeds",userData.allFeeds);
+
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
@@ -330,6 +327,7 @@ public class LoginServlet extends HttpServlet {
             userData.path = p.toString();
             if (userData.connection) {
                 dataBase.loadURL(userData);
+                Pages.prepareList(userData);
             } else {
                 if (!XMLReader.fileRead(userData)) {
                     userData.message = "You have no internet connection!";
@@ -356,11 +354,6 @@ public class LoginServlet extends HttpServlet {
                 break;
             }
             i++;
-        }
-        if (userData.connection) {
-            XMLReader.writeNews(userData);
-        } else if (!userData.loadLogs) {
-            XMLReader.fileRead(userData);
         }
         return userData.linksList.get(userData.linkIndex).feedsList;
     }

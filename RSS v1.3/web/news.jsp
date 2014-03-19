@@ -19,16 +19,9 @@
 </head>
 <body>
 <form action="Login">
-    <c:if test="${feeds != null}">
-        <c:set var="feedlist" value="${feeds}"/>
-    </c:if>
-    <c:if test="${feeds == null}">
-        <c:if test="${allFeeds != null} ">
-            <c:set var="feedlist" value="${allFeeds}"/>
-        </c:if>
-    </c:if>
+
 <table>
-    <c:forEach var="feed" items="${feeds}" step="1" varStatus="count">
+    <c:forEach var="feed" items="${feeds}"  varStatus="count">
         <tr>
             <td colspan="2">
             <a href="${feed.link}">
@@ -59,6 +52,9 @@
     </c:forEach>
 
 </table>
+
+
+
 </form>
 </body>
 </html>

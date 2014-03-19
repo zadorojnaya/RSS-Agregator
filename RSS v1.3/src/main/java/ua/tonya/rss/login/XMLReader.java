@@ -53,40 +53,6 @@ public class XMLReader {
         }
     }
 
-    /**
-     * @param uData structure of user data
-     * @return
-     */
-    static boolean createFirstNews(UserData uData) {
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            InputStream is = new FileInputStream(uData.path);
-            Document doc = db.parse(is);
-            doc.getDocumentElement().normalize();
-
-            NodeList feedNode = doc.getElementsByTagName("feed");
-            List<Feeds> feedsList = new ArrayList<Feeds>();
-            for (int j = 0; j < feedNode.getLength(); ++j) {
-                Feeds f = new Feeds();
-                Element feed = (Element) feedNode.item(j);
-
-                f.author = getElementValue(feed, "author");
-                f.title = getElementValue(feed, "title");
-                f.publishDate = getElementValue(feed, "date");
-                f.link = getElementValue(feed, "linkfeed");
-                f.description = getElementValue(feed, "description");
-
-                feedsList.add(f);
-            }
-            uData.allFeeds.addAll(feedsList);
-            return true;
-        } catch (Exception e) {
-            log.info(e.getMessage());
-            return false;
-        }
-    }
-
     public static boolean getDatabaseInfo() {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -258,10 +224,11 @@ public class XMLReader {
                 feed.author = getElementValue(element, "dc:creator");
                 feed.description = getElementValue(element, "description");
                 list.add(feed);
+                uData.allFeeds.add(feed);
             }
 
             uData.linksList.get(index).feedsList = list;
-            uData.allFeeds.addAll(list);
+
         } catch (Exception e) {
             log.info(e.getMessage());
         }
