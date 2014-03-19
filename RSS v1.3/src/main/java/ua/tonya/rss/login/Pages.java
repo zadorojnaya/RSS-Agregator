@@ -49,59 +49,6 @@ public class Pages {
     }
 
     /**
-     * method creates list of feeds to load in news.jsp
-     * result records to variable UserData.feeds
-     * there are elements of html code
-     *
-     * @param userData structure of user data
-     */
-    static void feeds(UserData userData) {
-        List<String> feeds = new ArrayList<String>();
-        int i;
-        Links l = userData.linksList.get(userData.linkIndex);
-        if (userData.sort) {
-
-            /*new is first*/
-            i = 0;
-            while (i < l.feedsList.size()) {
-                feeds.add(writeFeeds(i, userData));
-                i++;
-            }
-        } else {
-
-            /*old is first*/
-            i = l.feedsList.size() - 1;
-            while (i > 0) {
-                feeds.add(writeFeeds(i, userData));
-                i--;
-            }
-        }
-        userData.feeds = feeds;
-    }
-
-    /**
-     * Returns list of links to xml files to display in file menu.jsp
-     * there are elements of html code
-     *
-     * @param userData structure of user data
-     * @return
-     */
-    static List<String> menu(UserData userData) {
-        List<String> menu = new ArrayList<String>();
-        int i = 0;
-        while (i < userData.linksList.size()) {
-            StringBuilder temp = new StringBuilder();
-            temp.append("<input class=\"flat\" style=\" width:100%;\" type =submit name = \"News\" value =\"");
-            temp.append(userData.linksList.get(i).name);
-            temp.append("\"><br>");
-            menu.add(temp.toString());
-            i++;
-        }
-        return menu;
-    }
-
-
-    /**
      * Initialization xml
      */
     private static void ParamLangXML() {
@@ -130,32 +77,6 @@ public class Pages {
             i++;
         }
     }
-
-    /**
-     * This method is called only in void method feeds.
-     * Returns string of html code for every feed.
-     *
-     * @param newsId   count of feeds
-     * @param userData structure of user data
-     * @return
-     */
-    private static String writeFeeds(int newsId, UserData userData) {
-        StringBuilder temp = new StringBuilder();
-        Links l = userData.linksList.get(userData.linkIndex);
-        temp.append("<a href = \"");
-        temp.append(l.feedsList.get(newsId).link);
-        temp.append("\"><b>");
-        temp.append(l.feedsList.get(newsId).title);
-        temp.append("</b></a><br><i>");
-        temp.append(l.feedsList.get(newsId).author);
-        temp.append("</i><br>");
-        temp.append(l.feedsList.get(newsId).publishDate);
-        temp.append("<br><br>");
-        temp.append(l.feedsList.get(newsId).description);
-        temp.append("<br><br><br>");
-        return temp.toString();
-    }
-
 
     /**
      * Record to xml file

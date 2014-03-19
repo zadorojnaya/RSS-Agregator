@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -220,6 +221,16 @@ public class XMLReader {
     }
 
     /**
+     * Reverse List depending on the sort
+     * @param userData structure of user data
+     */
+    public static void reverse(UserData userData){
+        List<Feeds> f = userData.linksList.get(userData.linkIndex).feedsList;
+        Collections.reverse(f);
+        userData.linksList.get(userData.linkIndex).feedsList = f;
+    }
+
+    /**
      * Method opens and reads XML file
      * Result recorded as a list of feeds to variable UserData.feedsList
      *
@@ -248,7 +259,9 @@ public class XMLReader {
                 feed.description = getElementValue(element, "description");
                 list.add(feed);
             }
+
             uData.linksList.get(index).feedsList = list;
+            uData.allFeeds.addAll(list);
         } catch (Exception e) {
             log.info(e.getMessage());
         }

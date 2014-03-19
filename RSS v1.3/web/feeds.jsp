@@ -6,12 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
 </head>
-<body>
+<body >
 <form action="Login" method="post">
+    <c:if test="${!uData.sort}">
+         <c:set var="sort" value="Sort by date: old is first"/>
+    </c:if>
+    <c:if test="${uData.sort}">
+        <c:set var="sort" value="Sort by date: new is first"/>
+    </c:if>
     <table width="100%" height="100%">
         <tr>
             <td rowspan="5" width="20%">
@@ -35,7 +42,7 @@
         <tr>
             <td>Name:</td>
             <td><input type="text" style="width: 100%" name="addName"></td>
-            <td><input type="submit" value="Sort by date: new is first" style="height: 100%;width: 100%;" name="feedButton"></td>
+            <td><input type="submit" value="${sort}" style="height: 100%;width: 100%;" name="feedButton"></td>
         </tr>
         <tr>
             <td colspan="2"align="center">
@@ -44,14 +51,12 @@
             <td colspan="2" align="center">
                 <input type="submit" value="remove" style="height: 100%;width: 100%;" name="feedButton">
             </td>
-            <td><input type="submit" value="Sort by date: old is first" style="height: 100%;width: 100%;" name="feedButton"></td>
         </tr>
         <tr >
             <td colspan="5" height="80%">
                 <IFrame  name ="news" src="news.jsp" style="height: 100%; width:100%;"></IFrame>
             </td>
         </tr>
-
     </table>
 </form>
 </body>

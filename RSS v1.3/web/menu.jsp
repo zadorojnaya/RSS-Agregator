@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
@@ -16,8 +17,15 @@
 </head>
 <body onLoad="parent.news.document.location = 'news.jsp'">
 <form action="Login" method="post">
-<%if(session.getAttribute("list")!= null) {out.print(session.getAttribute("list").toString());}
-else out.print("Add URL");%>
+
+    <c:if test="${list != null }">
+        <c:forEach  var="button" items="${list}">
+            <input class="flat" style=" width:100%;" type =submit name = "News" value ="${button.name}">
+        </c:forEach>
+    </c:if>
+    <c:if test="${list == null }">
+        Add feeds!
+    </c:if>
 </form>
 </body>
 </html>

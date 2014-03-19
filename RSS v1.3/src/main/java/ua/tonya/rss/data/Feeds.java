@@ -15,6 +15,26 @@ import java.util.Locale;
     public String link;             /*link whole information*/
     public String publishDate;      /*date of publish*/
     public String title;            /*title of news*/
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor(){
+        return author;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public String getLink(){
+        return link;
+    }
+
+    public String getPublishDate(){
+        return publishDate;
+    }
 }
 
 
