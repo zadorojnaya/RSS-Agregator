@@ -1,6 +1,7 @@
 package ua.tonya.rss.data;
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -9,7 +10,7 @@ import java.util.Locale;
 /**
  * Data structure of feeds. Obtains from the xml file
  */
- public class Feeds {
+ public class Feeds implements Serializable{
     public String author;           /*author*/
     public String description;      /*description*/
     public String link;             /*link whole information*/

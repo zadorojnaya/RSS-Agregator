@@ -5,7 +5,9 @@
     <title></title>
   </head>
   <body>
+
   <form action="Login" method="post">
+      ${example}
       <table align="center">
           <tr>
               <th colspan="4">

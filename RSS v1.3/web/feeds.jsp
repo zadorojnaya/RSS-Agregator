@@ -11,12 +11,12 @@
 <head>
     <title></title>
 </head>
-<body >
+<body>
 <form action="Login" method="post">
-    <c:if test="${!uData.sort}">
+    <c:if test="${!sort}">
          <c:set var="sort" value="Sort by date: old is first"/>
     </c:if>
-    <c:if test="${uData.sort}">
+    <c:if test="${sort}">
         <c:set var="sort" value="Sort by date: new is first"/>
     </c:if>
     <table width="100%" height="100%">
@@ -27,8 +27,8 @@
             </td>
             <th colspan="2">Add</th>
             <th colspan="2">Remove</th>
-            <td><input type="text" value="<%if(session.getAttribute("message") != null){out.print
-                           (session.getAttribute("message"));} %> "disabled style="width: 100%">
+            <td><input type="text" value="<%if(request.getAttribute("message") != null){out.print
+                           (request.getAttribute("message"));} %> "disabled style="width: 100%">
             </td>
             </td>
         </tr>
@@ -51,6 +51,7 @@
             <td colspan="2" align="center">
                 <input type="submit" value="remove" style="height: 100%;width: 100%;" name="feedButton">
             </td>
+            <td><input type = "submit" value="Log off" name="feedButton" style="height: 100%; width:100%;"></td>
         </tr>
         <tr >
             <td colspan="5" height="80%">

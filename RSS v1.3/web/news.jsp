@@ -19,12 +19,12 @@
 </head>
 <body>
 <form action="Login">
-
 <table>
     <c:forEach var="feed" items="${feeds}"  varStatus="count">
         <tr>
             <td colspan="2">
-            <a href="${feed.link}">
+                <c:if test="${uData.connection}">
+            <a href="${feed.link}"></c:if>
                 <b><H2>
                     ${feed.title}
                 </b></H2>
@@ -50,11 +50,7 @@
         </tr>
         <tr><td colspan="2"><hr></td></tr>
     </c:forEach>
-
 </table>
-
-
-
 </form>
 </body>
 </html>

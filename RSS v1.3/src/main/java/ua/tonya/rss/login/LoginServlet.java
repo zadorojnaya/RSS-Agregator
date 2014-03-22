@@ -1,9 +1,12 @@
 package ua.tonya.rss.login;
 
 import org.xml.sax.SAXException;
+import sun.misc.Request;
+import sun.net.www.content.text.Generic;
+import sun.rmi.runtime.Log;
 import ua.tonya.rss.data.Feeds;
 import ua.tonya.rss.data.Links;
-import ua.tonya.rss.data.SessionData;
+import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -38,7 +42,7 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+
         HttpSession s = request.getSession();
 
         UserData.databaseConfig = null;
@@ -46,56 +50,57 @@ public class LoginServlet extends HttpServlet {
         UserData.databaseConfig.append("\\");
         UserData.databaseConfig.append("databaseConfig.xml");
 
-        Database dataBase;
+        Database dataBase = new Database();
         UserData userData;
 
-        if ((s.getAttribute("dBase") != null) && (s.getAttribute("uData") != null)) {
-            dataBase = (Database) s.getAttribute("dBase");
+        if (s.getAttribute("uData") != null) {
             userData = (UserData) s.getAttribute("uData");
         } else {
-            dataBase = new Database();
             userData = new UserData();
         }
 
-        SessionData sessionData = new SessionData();
-        sessionData.request = request;
-        sessionData = dataProcessing(s, sessionData);
+        RequestData requestData = new RequestData();
+        requestData.request = request;
+        requestData = dataProcessing(s, requestData);
         XMLReader.getConnection(userData);
         userData.message = null;
 
-        if (sessionData.button != null) {
-            if (indexPageProcessing(userData, dataBase, sessionData)) {
-                dispatcher = request.getRequestDispatcher("feeds.jsp");
+        if (requestData.button != null) {
+            if (indexPageProcessing(userData, dataBase, requestData)) {
                 s.setAttribute("feeds",userData.allFeeds);
+                dispatcher = request.getRequestDispatcher("feeds.jsp");
+                //request.setAttribute("feeds",userData.allFeed);
             } else {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
-        } else if (sessionData.feedsButton != null) {
-            feedsPageProcessing(userData, dataBase, sessionData);
-            dispatcher = request.getRequestDispatcher("feeds.jsp");
-        } else if (sessionData.menuButton != null) {
+        } else if (requestData.feedsButton != null) {
+                feedsPageProcessing(userData, dataBase, requestData);
+                dispatcher = request.getRequestDispatcher("feeds.jsp");
+        } else if (requestData.menuButton != null) {
             try {
-                s.setAttribute("feeds",menuPageProcessing(userData, sessionData));
+                s.setAttribute("feeds", menuPageProcessing(userData, requestData));
             } catch (SAXException e) {                                              /*there will never be an error*/
             } catch (ParserConfigurationException e) {                              /*because of userData.connection*/
             }
             dispatcher = request.getRequestDispatcher("menu.jsp");
         }
 
-        s.setAttribute("dBase", dataBase);
         s.setAttribute("uData", userData);
         s.setAttribute("message", userData.message);
-
+        s.setAttribute("sort",userData.sort);
         if (userData.linksList != null) {
             s.setAttribute("list", userData.linksList);
         }
 
-
+        response.setContentType("text/html");
+        if ("Log off".equals(requestData.feedsButton)){
+            s.invalidate();
+            dispatcher = request.getRequestDispatcher("index.jsp");
+        }
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
 
-        dataBase.connectionClose();
     }
 
     /**
@@ -104,34 +109,23 @@ public class LoginServlet extends HttpServlet {
      * @param s HttpSession that was obtained at the beginning
      * @return
      */
-    private SessionData dataProcessing(HttpSession s, SessionData data) {
+    private RequestData dataProcessing(HttpSession s, RequestData data) {
 
         /*from index.jsp*/
-        s.setAttribute("buffer", data.request.getParameter("button"));
-        data.button = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("LoginLog"));
-        data.loginLog = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("PassLog"));
-        data.passwordLog = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("LoginReg"));
-        data.loginReg = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("PassReg"));
-        data.passwordReg = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("PassRegA"));
-        data.secondPass = (String) s.getAttribute("buffer");
+        data.button = data.request.getParameter("button");
+        data.loginLog = data.request.getParameter("LoginLog");
+        data.passwordLog = data.request.getParameter("PassLog");
+        data.loginReg = data.request.getParameter("LoginReg");
+        data.passwordReg = data.request.getParameter("PassReg");
+        data.secondPass = data.request.getParameter("PassRegA");
 
         /*from feeds.jsp*/
-        s.setAttribute("buffer", data.request.getParameter("feedButton"));
-        data.feedsButton = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("addName"));
-        data.addName = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("removeName"));
-        data.removeName = (String) s.getAttribute("buffer");
-        s.setAttribute("buffer", data.request.getParameter("URL"));
-        data.url = (String) s.getAttribute("buffer");
-        data.session = s;
-        s.setAttribute("buffer", data.request.getParameter("News"));
-        data.menuButton = (String) s.getAttribute("buffer");
+        data.feedsButton = data.request.getParameter("feedButton");
+        data.addName = data.request.getParameter("addName");
+        data.removeName = data.request.getParameter("removeName");
+        data.url = data.request.getParameter("URL");
+        data.menuButton = data.request.getParameter("News");
+
         return data;
     }
 
@@ -141,27 +135,29 @@ public class LoginServlet extends HttpServlet {
      *
      * @param userData    structure of user data
      * @param dataBase    that the application uses
-     * @param sessionData structure of session data
+     * @param requestData structure of request data
      * @throws java.io.IOException
      */
-    private void feedsPageProcessing(UserData userData, Database dataBase, SessionData sessionData)
+    private void feedsPageProcessing(UserData userData, Database dataBase, RequestData requestData)
             throws IOException {
 
-        if ("add".equals(sessionData.feedsButton)) {
+        if ("add".equals(requestData.feedsButton)) {
             if (userData.connection) {
-                if ((null != sessionData.url) && (null != sessionData.addName) &&
-                        (!sessionData.url.equals(("")) && (!sessionData.addName.equals("")))) {
+                if ((null != requestData.url) && (null != requestData.addName) &&
+                        (!requestData.url.equals(("")) && (!requestData.addName.equals("")))) {
                     try {
-                        if (XMLReader.checkConnection(sessionData.url)) {
-                            if (dataBase.addURL(sessionData, userData)) {
+                        if (XMLReader.checkConnection(requestData.url)) {
+                            if (dataBase.addURL(requestData, userData)) {
 
                                 /* was added*/
                                 Links l = new Links();
                                 userData.message = "new URL was added";
-                                l.name = sessionData.addName;
-                                l.url = sessionData.url;
+                                l.name = requestData.addName;
+                                l.url = requestData.url;
                                 userData.linksList.add(l);
-
+                                userData.linkIndex = userData.linksList.size()-1;
+                                XMLReader.writeNews(userData);
+                                //REFRESH NEWS!
                                 /*refresh menu*/
 
                             }
@@ -175,23 +171,23 @@ public class LoginServlet extends HttpServlet {
                 } else {
 
                     /*please enter URL to add*/
-                    userData.message = "enter url to add? please";
+                    userData.message = "enter url to add, please";
                 }
             } else {
 
                 /*no connection */
                 userData.message = "you can't add news if no internet connection";
             }
-        } else if ("remove".equals(sessionData.feedsButton)) {
+        } else if ("remove".equals(requestData.feedsButton)) {
             if (userData.connection) {
                 try {
-                    if ((sessionData.removeName != null) && (!sessionData.removeName.equals(""))) {
-                        if (dataBase.delete(sessionData, userData)) {
+                    if ((requestData.removeName != null) && (!requestData.removeName.equals(""))) {
+                        if (dataBase.delete(requestData, userData)) {
 
                             /* was removed*/
                             userData.message = "if it is still in menu - you couldn't remove";
                             Links l = new Links();
-                            l.name = sessionData.removeName;
+                            l.name = requestData.removeName;
                             int i = 0;
                             while (userData.linksList.size() > i) {
                                 if (l.name.equals(userData.linksList.get(i).name))
@@ -223,13 +219,17 @@ public class LoginServlet extends HttpServlet {
                  /*no connection */
                 userData.message = "you can't remove news if no internet connection";
             }
-        } else if ("Sort by date: new is first".equals(sessionData.feedsButton)) {
+        } else if ("Sort by date: new is first".equals(requestData.feedsButton)) {
             userData.sort = false;
-            XMLReader.reverse(userData);
-        } else if ("Sort by date: old is first".equals(sessionData.feedsButton)) {
+            if(userData.linkIndex != 0){
+                XMLReader.reverse(userData);
+            }
+        } else if ("Sort by date: old is first".equals(requestData.feedsButton)) {
             userData.sort = true;
-            XMLReader.reverse(userData);
-        } else if ("create logs".equals(sessionData.feedsButton)) {
+            if(userData.linkIndex != 0){
+                XMLReader.reverse(userData);
+            }
+        } else if ("create logs".equals(requestData.feedsButton)) {
             if (userData.connection) {
 
                     /*create logs*/
@@ -250,14 +250,14 @@ public class LoginServlet extends HttpServlet {
      *
      * @param userData    structure of user data
      * @param dataBase    that the application uses
-     * @param sessionData structure of session data
+     * @param requestData structure of session data
      * @return
      */
-    private boolean indexPageProcessing(UserData userData, Database dataBase, SessionData sessionData) {
-        if ("Sign in".equals(sessionData.button)) {
-            if (null != sessionData.loginLog && null != sessionData.passwordLog) {
+    private boolean indexPageProcessing(UserData userData, Database dataBase, RequestData requestData) {
+        if ("Sign in".equals(requestData.button)) {
+            if (null != requestData.loginLog && null != requestData.passwordLog) {
                 try {
-                    if (login(sessionData.loginLog, sessionData.passwordLog, dataBase, userData)) {
+                    if (login(requestData.loginLog, requestData.passwordLog, dataBase, userData)) {
 
                         /* all is good*/
                         return true;
@@ -278,10 +278,10 @@ public class LoginServlet extends HttpServlet {
                 /* enter password or login*/
                 userData.message = "enter login and password";
             }
-        } else if ("Create new account".equals(sessionData.button)) {
-            if (sessionData.secondPass.equals(sessionData.passwordReg)) {
+        } else if ("Create new account".equals(requestData.button)) {
+            if (requestData.secondPass.equals(requestData.passwordReg)) {
                 try {
-                    if (register(sessionData.loginReg, sessionData.passwordReg, dataBase, userData)) {
+                    if (register(requestData.loginReg, requestData.passwordReg, dataBase, userData)) {
 
                             /* how to work with rss-aggregator*/
                         return true;
@@ -317,8 +317,7 @@ public class LoginServlet extends HttpServlet {
      * @return
      * @throws java.sql.SQLException
      */
-    private Boolean login(String login, String pass, Database dataBase, UserData userData) throws SQLException,
-            IOException, SAXException, ParserConfigurationException {
+    private Boolean login(String login, String pass, Database dataBase, UserData userData) throws Exception {
         if (dataBase.login(login, pass, userData)) {
             StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
             p.append("\\_");
@@ -343,13 +342,13 @@ public class LoginServlet extends HttpServlet {
      * Return List of Feeds to be loaded to news.jsp
      *
      * @param userData    structure of user data
-     * @param sessionData structure of session data
+     * @param requestData structure of session data
      */
-    private List<Feeds> menuPageProcessing(UserData userData, SessionData sessionData) throws IOException,
+    private List<Feeds> menuPageProcessing(UserData userData, RequestData requestData) throws IOException,
             SAXException, ParserConfigurationException {
         int i = 0;
         while (i < userData.linksList.size()) {
-            if (userData.linksList.get(i).name.equals(sessionData.menuButton)) {
+            if (userData.linksList.get(i).name.equals(requestData.menuButton)) {
                 userData.linkIndex = i;
                 break;
             }
@@ -370,7 +369,7 @@ public class LoginServlet extends HttpServlet {
      * @param userData structure of user data
      * @return boolean
      */
-    private boolean register(String login, String pass, Database dataBase, UserData userData) throws SQLException {
+    private boolean register(String login, String pass, Database dataBase, UserData userData) throws Exception {
         if (dataBase.register(login, pass)) {
             userData.login = login;
             StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
@@ -383,5 +382,32 @@ public class LoginServlet extends HttpServlet {
             return false;
         }
     }
+
+    private String serialize(UserData userData){
+        try {
+            ByteArrayOutputStream bo = new ByteArrayOutputStream();
+            ObjectOutputStream so = new ObjectOutputStream(bo);
+            so.writeObject(userData);
+            so.flush();
+            return bo.toString("utf-8");
+            } catch (IOException e) {
+            System.out.println(e);
+            //here will be log
+            }
+            return null;
+    }
+
+    private UserData unSerialize(String serializedUD){
+        try {
+            byte b[] = serializedUD.getBytes("utf-8");
+            ByteArrayInputStream bi = new ByteArrayInputStream(b);
+            ObjectInputStream si = new ObjectInputStream(bi);
+            return  (UserData) si.readObject();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 }
+
 

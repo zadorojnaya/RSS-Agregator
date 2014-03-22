@@ -17,7 +17,6 @@
 </head>
 <body onLoad="parent.news.document.location = 'news.jsp'">
 <form action="Login" method="post">
-
     <c:if test="${list != null }">
         <c:forEach  var="button" items="${list}">
             <input class="flat" style=" width:100%;" type =submit name = "News" value ="${button.name}">

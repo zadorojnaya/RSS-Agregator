@@ -2,9 +2,11 @@ package ua.tonya.rss.login;
 
 import ua.tonya.rss.data.DataInfo;
 import ua.tonya.rss.data.Links;
-import ua.tonya.rss.data.SessionData;
+import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,10 @@ public class Database {
             } catch (IllegalAccessException e) {
                 log.info(e.getMessage());
                 return false;
-            }
+            } catch (Exception e) {
+                log.info(e.getMessage());
+                return false;
+                }
         } else {
             return false;
         }
@@ -54,30 +59,34 @@ public class Database {
      * Returns true if adding was successful,
      * returns false if no connection with database
      *
-     * @param sessionData structure of session data
+     * @param requestData structure of session data
      * @param uData       structure of user data
      * @return
      */
-    boolean addURL(SessionData sessionData, UserData uData) {
+    boolean addURL(RequestData requestData, UserData uData) {
 
         this.getConnection();
-        if(checkingLinkName(sessionData.addName,uData)){
+        if(checkingLinkName(requestData.addName,uData)){
             try (PreparedStatement pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);") ){
                 pstmt.setString(1, uData.login);
-                pstmt.setString(2, sessionData.url);
-                pstmt.setString(3, sessionData.addName);
+                pstmt.setString(2, requestData.url);
+                pstmt.setString(3, requestData.addName);
                 pstmt.executeUpdate();
                 return true;
             } catch (SQLException e) {
                 log.info(e.getMessage());
                 return false;
+            } finally {
+                this.connectionClose();
             }
         }
         uData.message = "you have link with this name. Choose another one.";
         return false;
+
     }
 
     boolean checkingLinkName(String link, UserData userData){
+        this.getConnection();
         try(PreparedStatement p = connect.prepareStatement("SELECT *from links where login= ? and name = ?;");){
             p.setString(1, userData.login);
             p.setString(2, link);
@@ -93,9 +102,11 @@ public class Database {
             } else {
                 return false;
             }
-    } catch (SQLException e1) {
+        } catch (SQLException e1) {
             e1.printStackTrace();
             return false;
+        }finally {
+            this.connectionClose();
         }
     }
 
@@ -114,20 +125,22 @@ public class Database {
      * returns true if deleting was successful,
      * returns false if no connection with database
      *
-     * @param sessionData structure of session data
+     * @param requestData structure of session data
      * @param uData       structure of user data
      * @return
      */
-    boolean delete(SessionData sessionData, UserData uData) {
+    boolean delete(RequestData requestData, UserData uData) {
         this.getConnection();
         try (PreparedStatement pstmt = connect.prepareStatement("delete from links where login= ? and name= ?;")) {
             pstmt.setString(1, uData.login);
-            pstmt.setString(2, sessionData.removeName);
+            pstmt.setString(2, requestData.removeName);
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
+        }finally {
+            this.connectionClose();
         }
     }
 
@@ -140,9 +153,7 @@ public class Database {
      */
     boolean loadURL(UserData userData) {
         this.getConnection();
-
         List<Links> links = new ArrayList<Links>();             /*List is formed from the table "links"*/
-
         try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from links where login = ?;");){
             pstmt.setString(1, userData.login);
             try( ResultSet rset = pstmt.executeQuery();){
@@ -158,6 +169,8 @@ public class Database {
         } catch (SQLException e) {
             log.log(Level.WARNING, "error in boolean Database.loadUrl", e);
             return false;
+        }finally {
+            this.connectionClose();
         }
     }
 
@@ -169,9 +182,9 @@ public class Database {
      * @param pass  password registered user
      * @return
      */
-    boolean login(String login, String pass, UserData userData) {
+    boolean login(String login, String pass, UserData userData) throws Exception {
         this.getConnection();
-        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from users where login= ? and pass = ?;");){
+        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from users where login= ? and pass= password(?) ;")){
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
             try(ResultSet rset = pstmt.executeQuery();){
@@ -187,6 +200,8 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
+        }finally {
+            this.connectionClose();
         }
     }
 
@@ -198,11 +213,10 @@ public class Database {
      * @param pass  that user has selected for recording
      * @return
      */
-    boolean register(String login, String pass) {
+    boolean register(String login, String pass) throws Exception {
         this.getConnection();
-
         /*Login is a key value in table*/
-        try ( PreparedStatement pstmt = connect.prepareStatement("insert into users (login,pass)values(?,?);");) {
+        try ( PreparedStatement pstmt = connect.prepareStatement("insert into users values(?,password(?));");) {
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
             pstmt.executeUpdate();
@@ -210,6 +224,10 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
+        }finally {
+            this.connectionClose();
         }
     }
+
+
 }
