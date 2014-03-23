@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinkList>
+    <Link>
+        <name></name>
+        <link></link>
+        <feedList>
+            <feed>
+                <author></author>
+                <title></title>
+                <date></date>
+                <linkfeed></linkfeed>
+                <discription></discription>
+            </feed>
+            <feed>
+                <author></author>
+                <title></title>
+                <date></date>
+                <linkfeed></linkfeed>
+                <discription></discription>
+            </feed>
+        </feedList>
+    </Link>
+    <Link>
+        <name></name>
+        <link></link>
+        <feedList>
+            <feed>
+                <author></author>
+                <title></title>
+                <date></date>
+                <linkfeed></linkfeed>
+                <discription></discription>
+            </feed>
+            <feed>
+                <author></author>
+                <title></title>
+                <date></date>
+                <linkfeed></linkfeed>
+                <discription></discription>
+            </feed>
+        </feedList>
+    </Link>
+</LinkList>

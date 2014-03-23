@@ -30,13 +30,13 @@ import java.util.logging.Logger;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private RequestDispatcher dispatcher;
-    private final static Logger log = Logger.getLogger(Database.class.getName());
+    private final static Logger log = Logger.getLogger(LoginServlet.class.getName());
 
     /**
      * main method of servlet
      *
-     * @param request
-     * @param response
+     * @param request Http request
+     * @param response http response
      * @throws javax.servlet.ServletException
      * @throws java.io.IOException
      */
@@ -61,15 +61,13 @@ public class LoginServlet extends HttpServlet {
 
         RequestData requestData = new RequestData();
         requestData.request = request;
-        requestData = dataProcessing(s, requestData);
+        requestData = dataProcessing(requestData);
         XMLReader.getConnection(userData);
         userData.message = null;
 
         if (requestData.button != null) {
             if (indexPageProcessing(userData, dataBase, requestData)) {
-                s.setAttribute("feeds",userData.allFeeds);
                 dispatcher = request.getRequestDispatcher("feeds.jsp");
-                //request.setAttribute("feeds",userData.allFeed);
             } else {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
@@ -78,38 +76,30 @@ public class LoginServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("feeds.jsp");
         } else if (requestData.menuButton != null) {
             try {
-                s.setAttribute("feeds", menuPageProcessing(userData, requestData));
+                menuPageProcessing(userData, requestData);
             } catch (SAXException e) {                                              /*there will never be an error*/
             } catch (ParserConfigurationException e) {                              /*because of userData.connection*/
             }
             dispatcher = request.getRequestDispatcher("menu.jsp");
         }
-
         s.setAttribute("uData", userData);
-        s.setAttribute("message", userData.message);
-        s.setAttribute("sort",userData.sort);
-        if (userData.linksList != null) {
-            s.setAttribute("list", userData.linksList);
-        }
-
-        response.setContentType("text/html");
         if ("Log off".equals(requestData.feedsButton)){
             s.invalidate();
             dispatcher = request.getRequestDispatcher("index.jsp");
         }
+        response.setContentType("text/html");
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
-
     }
 
     /**
-     * Returns an SessionData object that will be used for further selection methods.
+     * Returns a request data object that will be used for further selection methods.
      *
-     * @param s HttpSession that was obtained at the beginning
+     * @param data from page request
      * @return
      */
-    private RequestData dataProcessing(HttpSession s, RequestData data) {
+    private RequestData dataProcessing(RequestData data) {
 
         /*from index.jsp*/
         data.button = data.request.getParameter("button");
@@ -140,7 +130,6 @@ public class LoginServlet extends HttpServlet {
      */
     private void feedsPageProcessing(UserData userData, Database dataBase, RequestData requestData)
             throws IOException {
-
         if ("add".equals(requestData.feedsButton)) {
             if (userData.connection) {
                 if ((null != requestData.url) && (null != requestData.addName) &&
@@ -157,9 +146,9 @@ public class LoginServlet extends HttpServlet {
                                 userData.linksList.add(l);
                                 userData.linkIndex = userData.linksList.size()-1;
                                 XMLReader.writeNews(userData);
-                                //REFRESH NEWS!
-                                /*refresh menu*/
-
+                                if(!userData.sort){
+                                    XMLReader.reverse(userData,userData.linkIndex);
+                                }
                             }
                         } else userData.message = "we can't add this url";
                     } catch (Exception e) {
@@ -179,55 +168,47 @@ public class LoginServlet extends HttpServlet {
                 userData.message = "you can't add news if no internet connection";
             }
         } else if ("remove".equals(requestData.feedsButton)) {
-            if (userData.connection) {
-                try {
-                    if ((requestData.removeName != null) && (!requestData.removeName.equals(""))) {
-                        if (dataBase.delete(requestData, userData)) {
+            try {
+                if ((requestData.removeName != null) && (!requestData.removeName.equals(""))) {
+                    if (dataBase.delete(requestData, userData)) {
 
-                            /* was removed*/
-                            userData.message = "if it is still in menu - you couldn't remove";
-                            Links l = new Links();
-                            l.name = requestData.removeName;
-                            int i = 0;
-                            while (userData.linksList.size() > i) {
-                                if (l.name.equals(userData.linksList.get(i).name))
-                                    userData.linksList.remove(i);
-                                i++;
-                            }
+                        /* was removed*/
+                        userData.message = "if it is still in menu - you couldn't remove it";
+                        Links l = new Links();
+                        l.name = requestData.removeName;
+                        int i = 0;
+                        while (userData.linksList.size() > i) {
+                            if (l.name.equals(userData.linksList.get(i).name))
+                                userData.linksList.remove(i);
+                            i++;
 
-                            /*refresh menu*/
-
-                        } else {
-
-                            /*you have no this item in your feeds list*/
-                            userData.message = "no items found to be removed";
                         }
-
+                        userData.linkIndex = -1;
                     } else {
 
-                        /* please enter feed to remove*/
-                        userData.message = "enter item to remove, please";
+                        /*you have no this item in your feeds list*/
+                        userData.message = "no items found to be removed";
                     }
-                } catch (Exception e) {
+                } else {
 
-                    /*error connection to database*/
-                    userData.message = "error connection with database";
-                    log.info(e.getMessage());
+                    /* please enter feed to remove*/
+                    userData.message = "enter item to remove, please";
                 }
-            } else {
+            } catch (Exception e) {
 
-                 /*no connection */
-                userData.message = "you can't remove news if no internet connection";
+                /*error connection to database*/
+                userData.message = "error connection with database";
+                log.info(e.getMessage());
             }
         } else if ("Sort by date: new is first".equals(requestData.feedsButton)) {
-            userData.sort = false;
-            if(userData.linkIndex != 0){
-                XMLReader.reverse(userData);
+            if(userData.linkIndex != -1){
+                userData.sort = true;
+                XMLReader.reverseAll(userData);
             }
         } else if ("Sort by date: old is first".equals(requestData.feedsButton)) {
-            userData.sort = true;
-            if(userData.linkIndex != 0){
-                XMLReader.reverse(userData);
+            if(userData.linkIndex != -1){
+                userData.sort = false;
+                XMLReader.reverseAll(userData);
             }
         } else if ("create logs".equals(requestData.feedsButton)) {
             if (userData.connection) {
@@ -344,17 +325,21 @@ public class LoginServlet extends HttpServlet {
      * @param userData    structure of user data
      * @param requestData structure of session data
      */
-    private List<Feeds> menuPageProcessing(UserData userData, RequestData requestData) throws IOException,
+    private void menuPageProcessing(UserData userData, RequestData requestData) throws IOException,
             SAXException, ParserConfigurationException {
-        int i = 0;
-        while (i < userData.linksList.size()) {
-            if (userData.linksList.get(i).name.equals(requestData.menuButton)) {
-                userData.linkIndex = i;
-                break;
+        if("All Feeds".equals(requestData.menuButton)){
+            userData.linkIndex = -1;
+        } else {
+            int i = 0;
+            while (i < userData.linksList.size()) {
+                if (userData.linksList.get(i).name.equals(requestData.menuButton)) {
+                    userData.linkIndex = i;
+                    break;
+                }
+                i++;
             }
-            i++;
         }
-        return userData.linksList.get(userData.linkIndex).feedsList;
+
     }
 
     /**

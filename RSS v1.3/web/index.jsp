@@ -4,11 +4,10 @@
   <head>
     <title></title>
   </head>
-  <body>
-
+  <body class="index">
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
   <form action="Login" method="post">
-      ${example}
-      <table align="center">
+      <table align="center" class="fonts">
           <tr>
               <th colspan="4">
                   <H1 >Tonika's RSS reader</H1>
@@ -20,30 +19,27 @@
           </tr>
           <tr>
               <td> Login </td>
-              <td><input type="text" name="LoginLog" tabindex="1"></td>
+              <td><input type="text" name="LoginLog" tabindex="1" class="indexFields"></td>
               <td>Login</td>
-              <td><input type="text" name="LoginReg" tabindex="4"></td>
+              <td><input type="text" name="LoginReg" tabindex="4" class="indexFields"></td>
           </tr>
           <tr>
               <td rowspan="2">Password</td>
-              <td rowspan="2"><input type="text" name="PassLog" tabindex="2"></td>
+              <td rowspan="2"><input type="text" name="PassLog" tabindex="2" class="indexFields"></td>
               <td>Password</td>
-              <td><input type="text" name="PassReg"tabindex="5"></td>
+              <td><input type="text" name="PassReg"tabindex="5" class="indexFields"></td>
           </tr>
           <tr>
-
               <td>Password</td>
-              <td><input type="text" name="PassRegA" tabindex="6"></td>
+              <td><input type="text" name="PassRegA" tabindex="6" class="indexFields"></td>
           </tr>
           <tr>
-          <tr>
-              <th colspan="2"><input type="submit" value="Sign in" name="button" tabindex="3"></th>
-              <th colspan="2"> <input type="submit" value="Create new account" name="button" tabindex="7"></th>
+              <th colspan="2"><input type="submit" value="Sign in" name="button" tabindex="3"class="indexButton"></th>
+              <th colspan="2"> <input type="submit" value="Create new account" name="button" tabindex="7" class="indexButton"></th>
           </tr>
           <tr >
               <td colspan="4">
-                  <input type="text" value="<%if(session.getAttribute("message") != null){out.print
-     (session.getAttribute("message"));} %> "disabled style="width: 100%">
+                  <input type="text" value="${uData.message}" disabled class="indexFields">
               </td>
           </tr>
       </table>

@@ -65,8 +65,9 @@ public class Database {
      */
     boolean addURL(RequestData requestData, UserData uData) {
 
-        this.getConnection();
+
         if(checkingLinkName(requestData.addName,uData)){
+            this.getConnection();
             try (PreparedStatement pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);") ){
                 pstmt.setString(1, uData.login);
                 pstmt.setString(2, requestData.url);

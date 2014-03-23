@@ -7,22 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
 <html>
 <head>
     <title></title>
-    <style>  input.flat
-     {border:solid 1px black;}
-     A {text-decoration: none;}
-       body {margin:0;}</style>
+
+
 </head>
-<body onLoad="parent.news.document.location = 'news.jsp'">
+<body onLoad="parent.news.document.location = 'news.jsp'" class="menu">
 <form action="Login" method="post">
-    <c:if test="${list != null }">
-        <c:forEach  var="button" items="${list}">
-            <input class="flat" style=" width:100%;" type =submit name = "News" value ="${button.name}">
+    <input type="submit" value="All Feeds" name="News"  class="allFeedButton" >
+    <br>
+    <c:if test="${uData.linksList != null }">
+        <c:forEach  var="button" items="${uData.linksList}">
+            <input class="menuButton" type =submit name = "News" value ="${button.name}">
         </c:forEach>
     </c:if>
-    <c:if test="${list == null }">
+    <c:if test="${uData.linksList == null }">
         Add feeds!
     </c:if>
 </form>

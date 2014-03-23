@@ -1,0 +1,83 @@
+.indexButton{
+    border:solid 1px dodgerblue;
+    width:100%;
+    background-color: #FFFFF5;
+    color:dodgerblue;
+    font-size: 16;
+}
+.indexFields{
+    font-size: 16;
+    color:dodgerblue;
+    width: 100%;
+    background-color: #FFFFF5;
+}
+.menuButton {
+    border:solid 1px ;
+    width:100%;
+    background-color:#8099CC;
+    color: #FFFFF5;
+    font-size:25
+}
+.frames {
+    height: 100%;
+    width: 100%;
+    background-color: lavender;
+}
+.menu {
+    margin:0;
+}
+.feeds{
+    overflow:hidden;
+    margin:0;
+    background-color: lavender;
+    color: dodgerblue;
+}
+.feedsButton{
+    border:solid 1px dodgerblue;
+    width:100%;
+    background-color: #FFFFF5;
+    color:dodgerblue;
+    font-size: 16;
+}
+.feedsFields{
+    font-size: 16;
+    color:dodgerblue;
+    width: 100%;
+    background-color: #FFFFF5;
+}
+/*.feedsFields:disabled{*/
+    /*background-color: ;*/
+/*}*/
+
+.allFeedButton{
+    font-size: medium;
+    width:100%;
+    background-color: #FFFFF5;
+    color: dodgerblue;
+    font-size: 25;
+    border: dodgerblue;
+}
+.index{
+    background-color: lavender;
+    color: dodgerblue;
+    font-size: 25;
+}
+.links:link{
+    color: #335CAD;
+}
+.links:visited{
+    color: steelblue;
+}
+.pageLinks{
+    text-decoration: none;
+    font-size: 20;
+}
+.pageLinks:link{
+    color: mediumblue;
+}
+.pageLinks:visited{
+    color: steelblue;
+}
+.fonts{
+    font-size: 25;
+}
