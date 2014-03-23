@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @author Antonina Zadorojnaya
  */
-public class UserData implements Serializable {
+public class UserData{
     public Set<Feeds> allFeeds = new TreeSet<Feeds>(new Comp());            /*stores all feed*/
     public Boolean connection = true;                                   /*connection to internet*/
     public int linkIndex = -1;                                           /*index of chosen link*/

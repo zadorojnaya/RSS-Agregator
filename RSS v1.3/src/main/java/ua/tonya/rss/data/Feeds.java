@@ -10,7 +10,7 @@ import java.util.Locale;
 /**
  * Data structure of feeds. Obtains from the xml file
  */
- public class Feeds implements Serializable{
+ public class Feeds{
     public String author;           /*author*/
     public String description;      /*description*/
     public String link;             /*link whole information*/

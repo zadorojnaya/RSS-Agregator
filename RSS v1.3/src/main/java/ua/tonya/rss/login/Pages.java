@@ -17,8 +17,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -61,7 +59,7 @@ public class Pages {
     }
 
     /**
-     * Write all missing values
+     * Takes values from all links
      *
      * @param userData structure of user data
      * @throws java.io.IOException

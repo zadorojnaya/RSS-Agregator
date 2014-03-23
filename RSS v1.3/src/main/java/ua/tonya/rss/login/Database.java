@@ -5,8 +5,6 @@ import ua.tonya.rss.data.Links;
 import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +26,10 @@ public class Database {
      * Obtains connection to database
      */
     public boolean getConnection() {
-        if(XMLReader.getDatabaseInfo()){
-                try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            connect = DriverManager.getConnection(DataInfo.url, DataInfo.user, DataInfo.pass);
+        if (XMLReader.getDatabaseInfo()) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                connect = DriverManager.getConnection(DataInfo.url, DataInfo.user, DataInfo.pass);
                 return true;
             } catch (ClassNotFoundException e) {
                 log.info(e.getMessage());
@@ -48,7 +46,7 @@ public class Database {
             } catch (Exception e) {
                 log.info(e.getMessage());
                 return false;
-                }
+            }
         } else {
             return false;
         }
@@ -64,11 +62,9 @@ public class Database {
      * @return
      */
     boolean addURL(RequestData requestData, UserData uData) {
-
-
-        if(checkingLinkName(requestData.addName,uData)){
+        if (checkingLinkName(requestData.addName, uData)) {
             this.getConnection();
-            try (PreparedStatement pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);") ){
+            try (PreparedStatement pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);")) {
                 pstmt.setString(1, uData.login);
                 pstmt.setString(2, requestData.url);
                 pstmt.setString(3, requestData.addName);
@@ -83,22 +79,30 @@ public class Database {
         }
         uData.message = "you have link with this name. Choose another one.";
         return false;
-
     }
 
-    boolean checkingLinkName(String link, UserData userData){
+    /**
+     * User can not add the same channels.
+     * This method checks for the existence of such a name in the database
+     * and returns false, if one is already there.
+     *
+     * @param link to new rss channel
+     * @param userData structure of user data
+     * @return
+     */
+    boolean checkingLinkName(String link, UserData userData) {
         this.getConnection();
-        try(PreparedStatement p = connect.prepareStatement("SELECT *from links where login= ? and name = ?;");){
+        try (PreparedStatement p = connect.prepareStatement("SELECT *from links where login= ? and name = ?;");) {
             p.setString(1, userData.login);
             p.setString(2, link);
             p.execute();
             int i = 0;
-            try(ResultSet rset = p.executeQuery();){
+            try (ResultSet rset = p.executeQuery();) {
                 while (rset.next()) {
-                 i++;
+                    i++;
                 }
             }
-            if(i == 0){
+            if (i == 0) {
                 return true;
             } else {
                 return false;
@@ -106,12 +110,16 @@ public class Database {
         } catch (SQLException e1) {
             e1.printStackTrace();
             return false;
-        }finally {
+        } finally {
             this.connectionClose();
         }
     }
 
-    boolean connectionClose(){
+    /**
+     * close connection
+     * @return
+     */
+    boolean connectionClose() {
         try {
             connect.close();
             return true;
@@ -140,7 +148,7 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        }finally {
+        } finally {
             this.connectionClose();
         }
     }
@@ -155,22 +163,22 @@ public class Database {
     boolean loadURL(UserData userData) {
         this.getConnection();
         List<Links> links = new ArrayList<Links>();             /*List is formed from the table "links"*/
-        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from links where login = ?;");){
+        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from links where login = ?;");) {
             pstmt.setString(1, userData.login);
-            try( ResultSet rset = pstmt.executeQuery();){
-                    while (rset.next()) {
+            try (ResultSet rset = pstmt.executeQuery();) {
+                while (rset.next()) {
                     Links l = new Links();
                     l.url = rset.getString("URL");
                     l.name = rset.getString("Name");
                     links.add(l);
                 }
-                    userData.linksList = links;
-                    return true;
+                userData.linksList = links;
+                return true;
             }
         } catch (SQLException e) {
             log.log(Level.WARNING, "error in boolean Database.loadUrl", e);
             return false;
-        }finally {
+        } finally {
             this.connectionClose();
         }
     }
@@ -185,10 +193,10 @@ public class Database {
      */
     boolean login(String login, String pass, UserData userData) throws Exception {
         this.getConnection();
-        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from users where login= ? and pass= password(?) ;")){
+        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from users where login= ? and pass= password(?) ;")) {
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
-            try(ResultSet rset = pstmt.executeQuery();){
+            try (ResultSet rset = pstmt.executeQuery();) {
                 while (rset.next()) {
                     userData.login = rset.getString("login");
                 }
@@ -201,7 +209,7 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        }finally {
+        } finally {
             this.connectionClose();
         }
     }
@@ -216,8 +224,9 @@ public class Database {
      */
     boolean register(String login, String pass) throws Exception {
         this.getConnection();
+
         /*Login is a key value in table*/
-        try ( PreparedStatement pstmt = connect.prepareStatement("insert into users values(?,password(?));");) {
+        try (PreparedStatement pstmt = connect.prepareStatement("insert into users values(?,password(?));");) {
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
             pstmt.executeUpdate();
@@ -225,10 +234,8 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        }finally {
+        } finally {
             this.connectionClose();
         }
     }
-
-
 }

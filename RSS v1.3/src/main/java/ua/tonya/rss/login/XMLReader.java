@@ -186,19 +186,20 @@ public class XMLReader {
 
     /**
      * Reverse List depending on the sort
+     *
      * @param userData structure of user data
      */
-    public static void reverse(UserData userData, int i){
+    public static void reverse(UserData userData, int i) {
         List<Feeds> f;
         f = userData.linksList.get(i).feedsList;
         Collections.reverse(f);
         userData.linksList.get(i).feedsList = f;
     }
 
-    public static void reverseAll(UserData userData){
+    public static void reverseAll(UserData userData) {
         int i = 0;
-        while(i< userData.linksList.size()){
-            reverse(userData,i);
+        while (i < userData.linksList.size()) {
+            reverse(userData, i);
             i++;
         }
     }

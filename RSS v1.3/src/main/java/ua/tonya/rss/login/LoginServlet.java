@@ -1,10 +1,6 @@
 package ua.tonya.rss.login;
 
 import org.xml.sax.SAXException;
-import sun.misc.Request;
-import sun.net.www.content.text.Generic;
-import sun.rmi.runtime.Log;
-import ua.tonya.rss.data.Feeds;
 import ua.tonya.rss.data.Links;
 import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
@@ -12,13 +8,12 @@ import ua.tonya.rss.data.UserData;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -35,14 +30,13 @@ public class LoginServlet extends HttpServlet {
     /**
      * main method of servlet
      *
-     * @param request Http request
+     * @param request  Http request
      * @param response http response
      * @throws javax.servlet.ServletException
      * @throws java.io.IOException
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession s = request.getSession();
 
         UserData.databaseConfig = null;
@@ -52,13 +46,11 @@ public class LoginServlet extends HttpServlet {
 
         Database dataBase = new Database();
         UserData userData;
-
         if (s.getAttribute("uData") != null) {
             userData = (UserData) s.getAttribute("uData");
         } else {
             userData = new UserData();
         }
-
         RequestData requestData = new RequestData();
         requestData.request = request;
         requestData = dataProcessing(requestData);
@@ -72,8 +64,8 @@ public class LoginServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
         } else if (requestData.feedsButton != null) {
-                feedsPageProcessing(userData, dataBase, requestData);
-                dispatcher = request.getRequestDispatcher("feeds.jsp");
+            feedsPageProcessing(userData, dataBase, requestData);
+            dispatcher = request.getRequestDispatcher("feeds.jsp");
         } else if (requestData.menuButton != null) {
             try {
                 menuPageProcessing(userData, requestData);
@@ -82,8 +74,9 @@ public class LoginServlet extends HttpServlet {
             }
             dispatcher = request.getRequestDispatcher("menu.jsp");
         }
+
         s.setAttribute("uData", userData);
-        if ("Log off".equals(requestData.feedsButton)){
+        if ("Log off".equals(requestData.feedsButton)) {
             s.invalidate();
             dispatcher = request.getRequestDispatcher("index.jsp");
         }
@@ -144,10 +137,10 @@ public class LoginServlet extends HttpServlet {
                                 l.name = requestData.addName;
                                 l.url = requestData.url;
                                 userData.linksList.add(l);
-                                userData.linkIndex = userData.linksList.size()-1;
+                                userData.linkIndex = userData.linksList.size() - 1;
                                 XMLReader.writeNews(userData);
-                                if(!userData.sort){
-                                    XMLReader.reverse(userData,userData.linkIndex);
+                                if (!userData.sort) {
+                                    XMLReader.reverse(userData, userData.linkIndex);
                                 }
                             }
                         } else userData.message = "we can't add this url";
@@ -201,12 +194,12 @@ public class LoginServlet extends HttpServlet {
                 log.info(e.getMessage());
             }
         } else if ("Sort by date: new is first".equals(requestData.feedsButton)) {
-            if(userData.linkIndex != -1){
+            if (userData.linkIndex != -1) {
                 userData.sort = true;
                 XMLReader.reverseAll(userData);
             }
         } else if ("Sort by date: old is first".equals(requestData.feedsButton)) {
-            if(userData.linkIndex != -1){
+            if (userData.linkIndex != -1) {
                 userData.sort = false;
                 XMLReader.reverseAll(userData);
             }
@@ -251,7 +244,7 @@ public class LoginServlet extends HttpServlet {
 
                     /* error connection to data base*/
                     userData.message = "error connection with database";
-                    e.printStackTrace();
+                    log.info(e.getMessage());
 
                 }
             } else {
@@ -327,7 +320,7 @@ public class LoginServlet extends HttpServlet {
      */
     private void menuPageProcessing(UserData userData, RequestData requestData) throws IOException,
             SAXException, ParserConfigurationException {
-        if("All Feeds".equals(requestData.menuButton)){
+        if ("All Feeds".equals(requestData.menuButton)) {
             userData.linkIndex = -1;
         } else {
             int i = 0;
@@ -343,8 +336,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     /**
-     *
-     *
      * Returns true if registration was successful.
      * Returns false if no connection with database or already have a login
      *
@@ -368,31 +359,4 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    private String serialize(UserData userData){
-        try {
-            ByteArrayOutputStream bo = new ByteArrayOutputStream();
-            ObjectOutputStream so = new ObjectOutputStream(bo);
-            so.writeObject(userData);
-            so.flush();
-            return bo.toString("utf-8");
-            } catch (IOException e) {
-            System.out.println(e);
-            //here will be log
-            }
-            return null;
-    }
-
-    private UserData unSerialize(String serializedUD){
-        try {
-            byte b[] = serializedUD.getBytes("utf-8");
-            ByteArrayInputStream bi = new ByteArrayInputStream(b);
-            ObjectInputStream si = new ObjectInputStream(bi);
-            return  (UserData) si.readObject();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return null;
-    }
 }
-
-

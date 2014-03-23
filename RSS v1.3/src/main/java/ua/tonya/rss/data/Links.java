@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Data structure of links. Obtains from the database
  */
-public class Links implements Serializable{
+public class Links{
     public List<Feeds> feedsList = new ArrayList<Feeds>();   /*list of news from xml file*/
     public String name;                                      /*name of feed*/
     public String url;                                       /*url of feed*/
