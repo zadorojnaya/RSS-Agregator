@@ -1,5 +1,6 @@
 package ua.tonya.rss.data;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -8,7 +9,7 @@ import java.util.Locale;
 /**
  * Created by Naya on 21.03.14.
  */
-public class Comp implements Comparator<Feeds>{
+public class Comp implements Comparator<Feeds>, Serializable{
         SimpleDateFormat f = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);
 
         /**

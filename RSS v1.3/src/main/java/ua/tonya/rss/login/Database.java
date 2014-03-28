@@ -1,6 +1,5 @@
 package ua.tonya.rss.login;
 
-import ua.tonya.rss.data.DataInfo;
 import ua.tonya.rss.data.Links;
 import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
@@ -18,38 +17,19 @@ import java.util.logging.Logger;
  * @version 1.3 12 Mar 2014  *
  */
 public class Database {
-    private Connection connect = null;
     private final static Logger log = Logger.getLogger(Database.class.getName());
 
     /**
      * class constructor.
      * Obtains connection to database
      */
-    public boolean getConnection() {
-        if (XMLReader.getDatabaseInfo()) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                connect = DriverManager.getConnection(DataInfo.url, DataInfo.user, DataInfo.pass);
-                return true;
-            } catch (ClassNotFoundException e) {
-                log.info(e.getMessage());
-                return false;
-            } catch (SQLException e) {
-                log.info(e.getMessage());
-                return false;
-            } catch (InstantiationException e) {
-                log.info(e.getMessage());
-                return false;
-            } catch (IllegalAccessException e) {
-                log.info(e.getMessage());
-                return false;
+    private static Connection getConnection() {
+        try {
+                return DriverManager.getConnection(DataInfo.url, DataInfo.user, DataInfo.pass);
             } catch (Exception e) {
                 log.info(e.getMessage());
-                return false;
+                return null;
             }
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -61,10 +41,9 @@ public class Database {
      * @param uData       structure of user data
      * @return
      */
-    boolean addURL(RequestData requestData, UserData uData) {
+    static boolean addURL(RequestData requestData, UserData uData) {
         if (checkingLinkName(requestData.addName, uData)) {
-            this.getConnection();
-            try (PreparedStatement pstmt = connect.prepareStatement("insert into links(login,URL,name)values(?,?,?);")) {
+            try (PreparedStatement pstmt = getConnection().prepareStatement("insert into links(login,URL,name)values(?,?,?);")) {
                 pstmt.setString(1, uData.login);
                 pstmt.setString(2, requestData.url);
                 pstmt.setString(3, requestData.addName);
@@ -73,8 +52,6 @@ public class Database {
             } catch (SQLException e) {
                 log.info(e.getMessage());
                 return false;
-            } finally {
-                this.connectionClose();
             }
         }
         uData.message = "you have link with this name. Choose another one.";
@@ -90,9 +67,8 @@ public class Database {
      * @param userData structure of user data
      * @return
      */
-    boolean checkingLinkName(String link, UserData userData) {
-        this.getConnection();
-        try (PreparedStatement p = connect.prepareStatement("SELECT *from links where login= ? and name = ?;");) {
+    static boolean checkingLinkName(String link, UserData userData) {
+        try (PreparedStatement p = getConnection().prepareStatement("SELECT *from links where login= ? and name = ?;");) {
             p.setString(1, userData.login);
             p.setString(2, link);
             p.execute();
@@ -108,23 +84,7 @@ public class Database {
                 return false;
             }
         } catch (SQLException e1) {
-            e1.printStackTrace();
-            return false;
-        } finally {
-            this.connectionClose();
-        }
-    }
-
-    /**
-     * close connection
-     * @return
-     */
-    boolean connectionClose() {
-        try {
-            connect.close();
-            return true;
-        } catch (SQLException e) {
-            log.info(e.getMessage());
+            log.info(e1.getMessage());
             return false;
         }
     }
@@ -138,9 +98,8 @@ public class Database {
      * @param uData       structure of user data
      * @return
      */
-    boolean delete(RequestData requestData, UserData uData) {
-        this.getConnection();
-        try (PreparedStatement pstmt = connect.prepareStatement("delete from links where login= ? and name= ?;")) {
+    static boolean delete(RequestData requestData, UserData uData) {
+        try (PreparedStatement pstmt = getConnection().prepareStatement("delete from links where login= ? and name= ?;")) {
             pstmt.setString(1, uData.login);
             pstmt.setString(2, requestData.removeName);
             pstmt.executeUpdate();
@@ -148,8 +107,6 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        } finally {
-            this.connectionClose();
         }
     }
 
@@ -160,10 +117,9 @@ public class Database {
      * @param userData structure of user data
      * @return
      */
-    boolean loadURL(UserData userData) {
-        this.getConnection();
+    static boolean loadURL(UserData userData) {
         List<Links> links = new ArrayList<Links>();             /*List is formed from the table "links"*/
-        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from links where login = ?;");) {
+        try (PreparedStatement pstmt = getConnection().prepareStatement("SELECT *from links where login = ?;");) {
             pstmt.setString(1, userData.login);
             try (ResultSet rset = pstmt.executeQuery();) {
                 while (rset.next()) {
@@ -178,8 +134,6 @@ public class Database {
         } catch (SQLException e) {
             log.log(Level.WARNING, "error in boolean Database.loadUrl", e);
             return false;
-        } finally {
-            this.connectionClose();
         }
     }
 
@@ -191,9 +145,8 @@ public class Database {
      * @param pass  password registered user
      * @return
      */
-    boolean login(String login, String pass, UserData userData) throws Exception {
-        this.getConnection();
-        try (PreparedStatement pstmt = connect.prepareStatement("SELECT *from users where login= ? and pass= password(?) ;")) {
+    static boolean login(String login, String pass, UserData userData) throws Exception {
+        try (PreparedStatement pstmt = getConnection().prepareStatement("SELECT *from users where login= ? and pass= password(?) ;")) {
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
             try (ResultSet rset = pstmt.executeQuery();) {
@@ -209,8 +162,6 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        } finally {
-            this.connectionClose();
         }
     }
 
@@ -222,11 +173,10 @@ public class Database {
      * @param pass  that user has selected for recording
      * @return
      */
-    boolean register(String login, String pass) throws Exception {
-        this.getConnection();
+    static boolean register(String login, String pass) throws Exception {
 
         /*Login is a key value in table*/
-        try (PreparedStatement pstmt = connect.prepareStatement("insert into users values(?,password(?));");) {
+        try (PreparedStatement pstmt = getConnection().prepareStatement("insert into users values(?,password(?));");) {
             pstmt.setString(1, login);
             pstmt.setString(2, pass);
             pstmt.executeUpdate();
@@ -234,8 +184,28 @@ public class Database {
         } catch (SQLException e) {
             log.info(e.getMessage());
             return false;
-        } finally {
-            this.connectionClose();
         }
+    }
+
+    static void loadDatabase(String realPath){
+        UserData.databaseConfig = null;
+        UserData.databaseConfig = new StringBuilder(realPath);
+        UserData.databaseConfig.append("\\");
+        UserData.databaseConfig.append("databaseConfig.xml");
+        XMLReader.getDatabaseInfo();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            log.info(e.getMessage());
+        }
+    }
+
+    /**
+     * Data structure for connection to database
+     */
+    static class DataInfo{
+        static String user;
+        static String pass;
+        static String url;
     }
 }

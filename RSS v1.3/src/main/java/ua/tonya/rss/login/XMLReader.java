@@ -3,7 +3,6 @@ package ua.tonya.rss.login;
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-import ua.tonya.rss.data.DataInfo;
 import ua.tonya.rss.data.Feeds;
 import ua.tonya.rss.data.Links;
 import ua.tonya.rss.data.UserData;
@@ -12,8 +11,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -46,31 +47,37 @@ public class XMLReader {
             Document doc = db.parse(yc.getInputStream());
             doc.getDocumentElement().normalize();
             return true;
-        } catch (Exception e) {
+        }
 
-            /*if it's no a xml file*/
+         /*if it's not a xml file*/
+         catch (MalformedURLException e) {
+             return false;
+        } catch (ParserConfigurationException e) {
+            return false;
+        } catch (SAXException e) {
+            return false;
+        } catch (IOException e) {
             return false;
         }
     }
 
     public static boolean getDatabaseInfo() {
-        try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            StringBuilder path = UserData.databaseConfig;
-
-            InputStream is = new FileInputStream(path.toString());
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try{DocumentBuilder db = dbf.newDocumentBuilder();
+        StringBuilder path = UserData.databaseConfig;
+        try (InputStream is = new FileInputStream(path.toString());){
             Document doc = db.parse(is);
             doc.getDocumentElement().normalize();
 
             NodeList nodes = doc.getElementsByTagName("database");
             for (int i = 0; i < nodes.getLength(); ++i) {
                 Element element = (Element) nodes.item(i);
-                DataInfo.user = getElementValue(element, "user");
-                DataInfo.pass = getElementValue(element, "pass");
-                DataInfo.url = getElementValue(element, "url");
+                Database.DataInfo.user = getElementValue(element, "user");
+                Database.DataInfo.pass = getElementValue(element, "pass");
+                Database.DataInfo.url = getElementValue(element, "url");
             }
             return true;
+        }
         } catch (Exception e) {
             log.info(e.getMessage());
             return false;
@@ -85,48 +92,60 @@ public class XMLReader {
      * @throws java.io.IOException
      * @throws org.xml.sax.SAXException
      */
-    public static Boolean fileRead(UserData uData) throws ParserConfigurationException, IOException, SAXException {
+    public static Boolean fileRead(UserData uData){
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = null;
+        Document doc = null;
         try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            InputStream is = new FileInputStream(uData.path);
-            Document doc = db.parse(is);
-            doc.getDocumentElement().normalize();
-
-            NodeList nodes = doc.getElementsByTagName("Link");
-            List<Links> l = new ArrayList<Links>();
-            for (int i = 0; i < nodes.getLength(); ++i) {
-                Element element = (Element) nodes.item(i);
-                Links link = new Links();
-
-                link.name = getElementValue(element, "name");
-                link.url = getElementValue(element, "url");
-
-                NodeList feedNode = doc.getElementsByTagName("feed");
-                List<Feeds> feedsList = new ArrayList<Feeds>();
-                for (int j = 0; j < feedNode.getLength(); ++j) {
-                    Feeds f = new Feeds();
-                    Element feed = (Element) feedNode.item(j);
-                    if (feed.getAttribute("link").equals(link.name)) {
-                        f.author = getElementValue(feed, "author");
-                        f.title = getElementValue(feed, "title");
-                        f.publishDate = getElementValue(feed, "date");
-                        f.link = getElementValue(feed, "linkfeed");
-                        f.description = getElementValue(feed, "description");
-
-                        feedsList.add(f);
-                    }
-                }
-                link.feedsList = feedsList;
-                uData.allFeeds.addAll(feedsList);
-                l.add(link);
-            }
-            uData.linksList = l;
-            return true;
-        } catch (Exception e) {
+            db = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
             log.info(e.getMessage());
             return false;
         }
+            try (InputStream is = new FileInputStream(uData.path);){
+                doc = db.parse(is);
+            } catch (FileNotFoundException e) {
+                log.info(e.getMessage());
+                return false;
+            } catch (IOException e) {
+                log.info(e.getMessage());
+                return false;
+            } catch (SAXException e) {
+                log.info(e.getMessage());
+                return false;
+            }
+                doc.getDocumentElement().normalize();
+
+                NodeList nodes = doc.getElementsByTagName("Link");
+                List<Links> l = new ArrayList<Links>();
+                for (int i = 0; i < nodes.getLength(); ++i) {
+                    Element element = (Element) nodes.item(i);
+                    Links link = new Links();
+
+                    link.name = getElementValue(element, "name");
+                    link.url = getElementValue(element, "url");
+
+                    NodeList feedNode = doc.getElementsByTagName("feed");
+                    List<Feeds> feedsList = new ArrayList<Feeds>();
+                    for (int j = 0; j < feedNode.getLength(); ++j) {
+                        Feeds f = new Feeds();
+                        Element feed = (Element) feedNode.item(j);
+                        if (feed.getAttribute("link").equals(link.name)) {
+                            f.author = getElementValue(feed, "author");
+                            f.title = getElementValue(feed, "title");
+                            f.publishDate = getElementValue(feed, "date");
+                            f.link = getElementValue(feed, "linkfeed");
+                            f.description = getElementValue(feed, "description");
+
+                            feedsList.add(f);
+                        }
+                    }
+                    link.feedsList = feedsList;
+                    uData.allFeeds.addAll(feedsList);
+                    l.add(link);
+                }
+                uData.linksList = l;
+                return true;
     }
 
     /**
@@ -154,7 +173,7 @@ public class XMLReader {
      *
      * @param uData structure of user data
      */
-    public static void getConnection(UserData uData) {
+    public static void checkConnection(UserData uData) {
 
         try {
 
@@ -166,9 +185,16 @@ public class XMLReader {
             Document doc = db.parse(yc.getInputStream());
             doc.getDocumentElement().normalize();
             uData.connection = true;
-        } catch (Exception e) {
+        }
 
-            /* no connection. Now we'll connected to local storage*/
+         /* no connection. Now we'll connected to local storage*/
+        catch (MalformedURLException e) {
+            uData.connection = false;
+        } catch (ParserConfigurationException e) {
+            uData.connection = false;
+        } catch (SAXException e) {
+            uData.connection = false;
+        } catch (IOException e) {
             uData.connection = false;
         }
     }

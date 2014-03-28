@@ -6,6 +6,7 @@ import ua.tonya.rss.data.RequestData;
 import ua.tonya.rss.data.UserData;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,13 @@ import java.util.logging.Logger;
  */
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
-    private RequestDispatcher dispatcher;
     private final static Logger log = Logger.getLogger(ua.tonya.rss.login.LoginServlet.class.getName());
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {}
+    private RequestDispatcher dispatcher;
+
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        Database.loadDatabase(getServletContext().getRealPath(""));
+    }
 
     /**
      * main method of servlet
@@ -40,13 +44,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession s = request.getSession();
-
-        UserData.databaseConfig = null;
-        UserData.databaseConfig = new StringBuilder(getServletContext().getRealPath(""));
-        UserData.databaseConfig.append("\\");
-        UserData.databaseConfig.append("databaseConfig.xml");
-
-        Database dataBase = new Database();
         UserData userData;
         if (s.getAttribute("uData") != null) {
             userData = (UserData) s.getAttribute("uData");
@@ -56,23 +53,22 @@ public class LoginServlet extends HttpServlet {
         RequestData requestData = new RequestData();
         requestData.request = request;
         requestData = dataProcessing(requestData);
-        XMLReader.getConnection(userData);
+        XMLReader.checkConnection(userData);
         userData.message = null;
 
         if (requestData.button != null) {
-            if (indexPageProcessing(userData, dataBase, requestData)) {
+            if (indexPageProcessing(userData, requestData)) {
                 dispatcher = request.getRequestDispatcher("feeds.jsp");
             } else {
                 dispatcher = request.getRequestDispatcher("index.jsp");
             }
         } else if (requestData.feedsButton != null) {
-            feedsPageProcessing(userData, dataBase, requestData);
+            feedsPageProcessing(userData, requestData);
             dispatcher = request.getRequestDispatcher("feeds.jsp");
         } else if (requestData.menuButton != null) {
             try {
                 menuPageProcessing(userData, requestData);
-            } catch (SAXException e) {                                              /*there will never be an error*/
-            } catch (ParserConfigurationException e) {                              /*because of userData.connection*/
+            } catch (SAXException | ParserConfigurationException e) {       /*there will never be an error*/
             }
             dispatcher = request.getRequestDispatcher("menu.jsp");
         }
@@ -86,6 +82,85 @@ public class LoginServlet extends HttpServlet {
         if (dispatcher != null) {
             dispatcher.forward(request, response);
         }
+    }
+
+    private void add(UserData userData,RequestData requestData){
+        if (userData.connection) {
+            if ((null != requestData.url) && (null != requestData.addName) &&
+                    (!requestData.url.equals(("")) && (!requestData.addName.equals("")))) {
+                try {
+                    if (XMLReader.checkConnection(requestData.url)) {
+                        if (Database.addURL(requestData, userData)) {
+
+                                /* was added*/
+                            Links l = new Links();
+                            userData.message = "new URL was added";
+                            l.name = requestData.addName;
+                            l.url = requestData.url;
+                            userData.linksList.add(l);
+                            userData.linkIndex = userData.linksList.size() - 1;
+                            XMLReader.writeNews(userData);
+                            if (!userData.sort) {
+                                XMLReader.reverse(userData, userData.linkIndex);
+                            }
+                        }
+                    } else userData.message = "we can't add this url";
+                } catch (Exception e) {
+
+                        /*error connection to data base*/
+                    userData.message = "error connection with database";
+                    log.info(e.getMessage());
+                }
+            } else {
+
+                    /*please enter URL to add*/
+                userData.message = "enter url to add, please";
+            }
+        } else {
+
+                /*no connection */
+            userData.message = "you can't add news if no internet connection";
+        }
+    }
+
+    private void createLogs(UserData userData){
+        if (userData.connection) {
+
+                    /*create logs*/
+            Pages.createLogs(userData);
+            userData.message = "logs were created";
+        } else {
+
+                     /*no connection */
+            userData.message = "you can't create logs if no internet connection";
+        }
+    }
+
+    private boolean createNewAccount(UserData userData, RequestData requestData){
+        if (requestData.secondPass.equals(requestData.passwordReg)) {
+            try {
+                if (register(requestData.loginReg, requestData.passwordReg, userData)) {
+
+                            /* how to work with rss-aggregator*/
+                    return true;
+                } else {
+
+                            /* choose another login*/
+                    userData.message = "choose another login, please";
+                }
+            } catch (Exception e) {
+
+                        /* error connection to database*/
+                userData.message = "error connection with database";
+                log.info(e.getMessage());
+
+            }
+        } else {
+
+                    /* pass not equals*/
+            userData.message = "passes not equals";
+        }
+        return false;
     }
 
     /**
@@ -119,103 +194,33 @@ public class LoginServlet extends HttpServlet {
      * processes all buttons on this page.
      *
      * @param userData    structure of user data
-     * @param dataBase    that the application uses
      * @param requestData structure of request data
      * @throws java.io.IOException
      */
-    private void feedsPageProcessing(UserData userData, Database dataBase, RequestData requestData)
+    private void feedsPageProcessing(UserData userData, RequestData requestData)
             throws IOException {
-        if ("add".equals(requestData.feedsButton)) {
-            if (userData.connection) {
-                if ((null != requestData.url) && (null != requestData.addName) &&
-                        (!requestData.url.equals(("")) && (!requestData.addName.equals("")))) {
-                    try {
-                        if (XMLReader.checkConnection(requestData.url)) {
-                            if (dataBase.addURL(requestData, userData)) {
-
-                                /* was added*/
-                                Links l = new Links();
-                                userData.message = "new URL was added";
-                                l.name = requestData.addName;
-                                l.url = requestData.url;
-                                userData.linksList.add(l);
-                                userData.linkIndex = userData.linksList.size() - 1;
-                                XMLReader.writeNews(userData);
-                                if (!userData.sort) {
-                                    XMLReader.reverse(userData, userData.linkIndex);
-                                }
-                            }
-                        } else userData.message = "we can't add this url";
-                    } catch (Exception e) {
-
-                        /*error connection to data base*/
-                        userData.message = "error connection with database";
-                        log.info(e.getMessage());
-                    }
-                } else {
-
-                    /*please enter URL to add*/
-                    userData.message = "enter url to add, please";
-                }
-            } else {
-
-                /*no connection */
-                userData.message = "you can't add news if no internet connection";
+        switch (requestData.feedsButton) {
+            case ("add"): {
+                add(userData,requestData);
+                break;
             }
-        } else if ("remove".equals(requestData.feedsButton)) {
-            try {
-                if ((requestData.removeName != null) && (!requestData.removeName.equals(""))) {
-                    if (dataBase.delete(requestData, userData)) {
-
-                        /* was removed*/
-                        userData.message = "if it is still in menu - you couldn't remove it";
-                        Links l = new Links();
-                        l.name = requestData.removeName;
-                        int i = 0;
-                        while (userData.linksList.size() > i) {
-                            if (l.name.equals(userData.linksList.get(i).name))
-                                userData.linksList.remove(i);
-                            i++;
-
-                        }
-                        userData.linkIndex = -1;
-                    } else {
-
-                        /*you have no this item in your feeds list*/
-                        userData.message = "no items found to be removed";
-                    }
-                } else {
-
-                    /* please enter feed to remove*/
-                    userData.message = "enter item to remove, please";
-                }
-            } catch (Exception e) {
-
-                /*error connection to database*/
-                userData.message = "error connection with database";
-                log.info(e.getMessage());
+            case ("remove"): {
+                remove(userData,requestData);
+                break;
             }
-        } else if ("Sort by date: new is first".equals(requestData.feedsButton)) {
-            if (userData.linkIndex != -1) {
-                userData.sort = true;
-                XMLReader.reverseAll(userData);
+            case ("Sort by date: new is first"): {
+                sortN(userData);
+                break;
             }
-        } else if ("Sort by date: old is first".equals(requestData.feedsButton)) {
-            if (userData.linkIndex != -1) {
-                userData.sort = false;
-                XMLReader.reverseAll(userData);
+            case ("Sort by date: old is first"): {
+                sortO(userData);
+                break;
             }
-        } else if ("create logs".equals(requestData.feedsButton)) {
-            if (userData.connection) {
-
-                    /*create logs*/
-                Pages.createLogs(userData);
-                userData.message = "logs were created";
-            } else {
-
-                     /*no connection */
-                userData.message = "you can't create logs if no internet connection";
+            case ("create logs"): {
+                createLogs(userData);
+                break;
             }
+            default: break;
         }
     }
 
@@ -225,61 +230,20 @@ public class LoginServlet extends HttpServlet {
      * if all goes well - returns true for the subsequent transition to feeds.jsp
      *
      * @param userData    structure of user data
-     * @param dataBase    that the application uses
      * @param requestData structure of session data
      * @return
      */
-    private boolean indexPageProcessing(UserData userData, Database dataBase, RequestData requestData) {
-        if ("Sign in".equals(requestData.button)) {
-            if (null != requestData.loginLog && null != requestData.passwordLog) {
-                try {
-                    if (login(requestData.loginLog, requestData.passwordLog, dataBase, userData)) {
-
-                        /* all is good*/
-                        return true;
-                    } else {
-
-                        /* wrong password*/
-                        userData.message = "wrong password or login";
-                    }
-                } catch (Exception e) {
-
-                    /* error connection to data base*/
-                    userData.message = "error connection with database";
-                    log.info(e.getMessage());
-
-                }
-            } else {
-
-                /* enter password or login*/
-                userData.message = "enter login and password";
+    private boolean indexPageProcessing(UserData userData, RequestData requestData) {
+        switch (requestData.button) {
+            case ("Sign in"): {
+                return signIn(userData, requestData);
             }
-        } else if ("Create new account".equals(requestData.button)) {
-            if (requestData.secondPass.equals(requestData.passwordReg)) {
-                try {
-                    if (register(requestData.loginReg, requestData.passwordReg, dataBase, userData)) {
-
-                            /* how to work with rss-aggregator*/
-                        return true;
-                    } else {
-
-                            /* choose another login*/
-                        userData.message = "choose another login, please";
-                    }
-                } catch (Exception e) {
-
-                        /* error connection to database*/
-                    userData.message = "error connection with database";
-                    log.info(e.getMessage());
-
-                }
-            } else {
-
-                    /* pass not equals*/
-                userData.message = "passes not equals";
+            case ("Create new account"): {
+                return createNewAccount(userData, requestData);
             }
+            default:
+                return false;
         }
-        return false;
     }
 
     /**
@@ -288,20 +252,19 @@ public class LoginServlet extends HttpServlet {
      *
      * @param login    name registered user
      * @param pass     password registered user
-     * @param dataBase that the application uses
      * @param userData structure of user data
      * @return
      * @throws java.sql.SQLException
      */
-    private Boolean login(String login, String pass, Database dataBase, UserData userData) throws Exception {
-        if (dataBase.login(login, pass, userData)) {
+    private Boolean login(String login, String pass,  UserData userData) throws Exception {
+        if (Database.login(login, pass, userData)) {
             StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
             p.append("\\_");
             p.append(login);
             p.append(".xml");
             userData.path = p.toString();
             if (userData.connection) {
-                dataBase.loadURL(userData);
+                Database.loadURL(userData);
                 Pages.prepareList(userData);
             } else {
                 if (!XMLReader.fileRead(userData)) {
@@ -343,12 +306,11 @@ public class LoginServlet extends HttpServlet {
      *
      * @param login    that user has selected for recording
      * @param pass     that user has selected for recording
-     * @param dataBase that the application uses
      * @param userData structure of user data
      * @return boolean
      */
-    private boolean register(String login, String pass, Database dataBase, UserData userData) throws Exception {
-        if (dataBase.register(login, pass)) {
+    private boolean register(String login, String pass,  UserData userData) throws Exception {
+        if (Database.register(login, pass)) {
             userData.login = login;
             StringBuilder p = new StringBuilder(getServletContext().getRealPath(""));
             p.append("\\_");
@@ -358,6 +320,81 @@ public class LoginServlet extends HttpServlet {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private void remove(UserData userData, RequestData requestData){
+        try {
+            if ((requestData.removeName != null) && (!requestData.removeName.equals(""))) {
+                if (Database.delete(requestData, userData)) {
+
+                        /* was removed*/
+                    userData.message = "if it is still in menu - you couldn't remove it";
+                    Links l = new Links();
+                    l.name = requestData.removeName;
+                    int i = 0;
+                    while (userData.linksList.size() > i) {
+                        if (l.name.equals(userData.linksList.get(i).name))
+                            userData.linksList.remove(i);
+                        i++;
+
+                    }
+                    userData.linkIndex = -1;
+                } else {
+
+                        /*you have no this item in your feeds list*/
+                    userData.message = "no items found to be removed";
+                }
+            } else {
+
+                    /* please enter feed to remove*/
+                userData.message = "enter item to remove, please";
+            }
+        } catch (Exception e) {
+
+                /*error connection to database*/
+            userData.message = "error connection with database";
+            log.info(e.getMessage());
+        }
+    }
+
+    private boolean signIn(UserData userData, RequestData requestData){
+        if (null != requestData.loginLog && null != requestData.passwordLog) {
+            try {
+                if (login(requestData.loginLog, requestData.passwordLog, userData)) {
+
+                        /* all is good*/
+                    return true;
+                } else {
+
+                        /* wrong password*/
+                    userData.message = "wrong password or login";
+                }
+            } catch (Exception e) {
+
+                    /* error connection to data base*/
+                userData.message = "error connection with database";
+                log.info(e.getMessage());
+            }
+        } else {
+
+                /* enter password or login*/
+            userData.message = "enter login and password";
+        }
+        return false;
+    }
+
+    private void sortN(UserData userData){
+        if (userData.linkIndex != -1) {
+            userData.sort = true;
+            XMLReader.reverseAll(userData);
+        }
+    }
+
+    private void sortO(UserData userData){
+        if (userData.linkIndex != -1) {
+            userData.sort = false;
+            XMLReader.reverseAll(userData);
         }
     }
 
