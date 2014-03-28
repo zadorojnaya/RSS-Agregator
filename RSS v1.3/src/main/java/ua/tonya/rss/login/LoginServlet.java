@@ -25,7 +25,9 @@ import java.util.logging.Logger;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
     private RequestDispatcher dispatcher;
-    private final static Logger log = Logger.getLogger(LoginServlet.class.getName());
+    private final static Logger log = Logger.getLogger(ua.tonya.rss.login.LoginServlet.class.getName());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {}
 
     /**
      * main method of servlet
